@@ -1,0 +1,714 @@
+
+html {
+    color: whitef;
+    line-height: 1.4;
+}
+
+@font-face {
+    font-family: Vibrocentric;
+    src: url("../fonts/vibrocentric%20rg%20it.otf");
+}
+
+@font-face {
+    font-family: TempestaSeven;
+    src: url("../fonts/pf_tempesta_seven.ttf");
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::-webkit-input-placeholder {
+    color: rgba(117, 121, 128, 0.5);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: rgba(117, 121, 128, 0.5);
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    color: rgba(117, 121, 128, 0.5);
+}
+
+:-ms-input-placeholder {
+    color: rgba(117, 121, 128, 0.5);
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+@keyframes alpha_in {
+    from { opacity: 0; }
+    to { opacity: 1.0; }
+}
+
+@-webkit-keyframes alpha_in {
+    from { opacity: 0; }
+    to { opacity: 1.0; }
+}
+
+textarea {
+    resize: vertical;
+}
+
+div.chatbkg
+{
+    border-image: url("../img/window_sheet_07.png") 4 4 4 4 stretch;
+    border-width: 4px 4px 4px 4px;
+    border-image-width: 4px 4px 4px 4px;
+    border-style: solid;
+    padding: 4px 4px 4px 4px;
+
+    height: calc(100% - 8px);
+
+    background-image: url("../img/window_sheet_07_int.png");
+    background-repeat: repeat;
+
+    animation-name: alpha_in;
+    animation-duration: 0.5s;
+    -webkit-animation-name: alpha_in;
+    -webkit-animation-duration: 0.5s;
+}
+
+div.chatareabkg
+{
+    border-image: url("../img/window_sheet_46.png") 4 4 4 4 stretch;
+    border-width: 4px 4px 4px 4px;
+    border-image-width: 4px 4px 4px 4px;
+    border-style: solid;
+
+    background-image: url("../img/window_sheet_46_int.png");
+    background-repeat: repeat;
+
+    width: auto;
+    height: calc(100% - 118px);
+    padding: 1px 1px 10px 1px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+div.chatelement
+{
+    width: auto;
+    height: auto;
+    border: 1px solid black;
+    min-height: 28px;
+    background-color: rgba(27, 33, 44, 0.5);
+    box-shadow: inset 5px 5px 15px 15px rgba(200, 200, 200, 0.05), inset -5px -5px 15px 15px rgba(200, 200, 200, 0.05);
+    padding: 0 0 0 0;
+}
+
+div.chatelementname
+{
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-align: right;
+    color: rgba(194, 204, 186, 1);
+    width: calc(15% + 5px);
+    float: left;
+    height: auto;
+    padding: 0 0 0 1px;
+    overflow: hidden;
+}
+
+div.chatelementtext
+{
+    font-family: Verdana, sans-serif;
+    font-size: 10pt;
+    font-weight: bold;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-align: left;
+    color: rgba(220, 227, 241, 0.9);
+    margin-left: 15%;
+    width: calc(85% - 25px);
+    height: auto;
+    padding: 0 0 0 0;
+    margin-top: -2px;
+
+    white-space: pre-wrap;      /* CSS3 */
+    white-space: -moz-pre-wrap; /* Firefox */
+    white-space: -pre-wrap;     /* Opera <7 */
+    white-space: -o-pre-wrap;   /* Opera 7 */
+    word-wrap: break-word;      /* IE */
+}
+
+div.chatelemtime
+{
+    font-family: TempestaSeven, Verdana, sans-serif;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 6pt;
+    color: rgba(222, 229, 243, 0.7);
+    height: auto;
+    padding: 0 3px 0 5px;
+    margin-top: -3px;
+    float: right;
+}
+
+
+div.chatelementtitle
+{
+    font-family: TempestaSeven, Verdana, sans-serif;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 5pt;
+    color: rgba(164, 168, 127, 0.7);
+    height: auto;
+}
+
+hr.chatelementtitleseparator
+{
+    border: none;
+    height: 1px;
+    margin: 0;
+    /* Set the hr color */
+    color: #333; /* old IE */
+    background-color: #333; /* Modern Browsers */
+}
+
+div.channellabel
+{
+    font-family: Impact, sans-serif;
+    font-size: 16pt;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-align: left;
+    padding: 1px 30px 1px 1px;
+    color: white;
+}
+
+div.channellist
+{
+    text-align: left;
+    height: 37px;
+    margin-left: 40px;
+}
+
+div.playerlistelement
+{
+    width: auto;
+    height: auto;
+    border: 1px solid black;
+    display: block;
+    background-color: rgba(27, 33, 44, 0.5);
+    box-shadow: inset 5px 5px 15px 15px rgba(200, 200, 200, 0.05), inset -5px -5px 15px 15px rgba(200, 200, 200, 0.05);
+    padding: 0 0 0 0;
+
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 11pt;
+}
+
+button.channelbutton
+{
+    background-color: rgba(57, 64, 76, 1.0);
+    transform: skew(-20deg);
+    border: 1px solid rgba(70, 70, 76, 0);
+    display:inline-block;
+    cursor:pointer;
+    color:rgba(146, 151, 161, 1.0);
+    font-family: Impact, sans-serif;
+    font-size:15px;
+    padding:4px 25px;
+    text-decoration:none;
+    text-shadow: 1px 1px black;
+    box-shadow: inset 3px 3px 3px 3px rgba(28, 36, 50, 0.4), inset -3px -3px 3px 3px rgba(28, 36, 50, 0.4);
+}
+
+button.channelbuttonselected
+{
+    z-index: 1;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: rgba(98, 118, 156, 1.0);
+    border: 1px solid rgba(145, 180, 256, 1.0);
+    transform: skew(-20deg);
+    display:inline-block;
+    cursor:pointer;
+    color: rgba(222, 229, 243, 1.0);
+    font-family: Impact, sans-serif;
+    font-size:15px;
+    padding:4px 25px;
+    text-decoration:none;
+    text-shadow: 1px 1px black;
+    box-shadow: inset 0 0 10px 5px rgba(35, 23, 77, 0.25),
+                0 0 30px 2px rgba(103, 150, 241, 1.0);
+}
+
+input.chatinput
+{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14pt;
+    font-weight: bold;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+    display: block;
+    border: 0;
+    padding: 2px 2px 2px 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color: rgba(117, 121, 128, 1.0);
+
+    width: calc(100% - 6px);
+    background: rgba(64,75,90,0.5);
+    box-shadow: inset 1px 1px 1px 1px rgba(54, 54, 54, 0.9), inset -1px -1px 1px 1px rgba(156, 156, 156, 0.4);
+}
+
+div.gamelistbkg
+{
+    background-color: rgba(11, 40, 44 , 1.0);
+    box-shadow: inset 2px 2px 3px 0 rgba(60, 74, 76, 1.0), inset -2px -2px 3px 0 rgba(33, 41, 43, 1.0);
+
+    border-width: 4px 4px 4px 4px;
+    border-image-width: 4px 4px 4px 4px;
+    padding: 4px 4px 4px 4px;
+
+    animation-name: alpha_in;
+    animation-duration: 0.5s;
+    -webkit-animation-name: alpha_in;
+    -webkit-animation-duration: 0.5s;
+
+    animation-name: alpha_in;
+    animation-duration: 0.5s;
+    -webkit-animation-name: alpha_in;
+    -webkit-animation-duration: 0.5s;
+}
+
+div.bluebkg
+{
+    background-color: rgba(20, 30, 49, 1.0);
+    box-shadow: inset 2px 2px 3px 0 rgba(64, 69, 79, 1.0), inset -2px -2px 3px 0 rgba(36, 39, 44, 1.0);
+
+    width: 400px;
+    height: 400px;
+
+    animation-name: alpha_in;
+    animation-duration: 0.5s;
+    -webkit-animation-name: alpha_in;
+    -webkit-animation-duration: 0.5s;
+}
+
+div.cyan_bkg
+{
+    background-color: rgba(11, 40, 44 , 1.0);
+    box-shadow: inset 2px 2px 3px 0 rgba(60, 74, 76, 1.0), inset -2px -2px 3px 0 rgba(33, 41, 43, 1.0);
+
+    border-width: 4px 4px 4px 4px;
+    border-image-width: 4px 4px 4px 4px;
+    padding: 4px 4px 4px 4px;
+
+    animation-name: alpha_in;
+    animation-duration: 0.5s;
+    -webkit-animation-name: alpha_in;
+    -webkit-animation-duration: 0.5s;
+}
+
+div.blueinterior
+{
+    background-color: rgba(65, 75, 90 , 1.0);
+    box-shadow: inset 2px 2px 3px 0 rgba(29, 33, 40, 1.0), inset -2px -2px 3px 0 rgba(81, 90, 102, 1.0);
+
+    border-width: 1px;
+    padding: 1px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+div.loginarea
+{
+    border-image: url("../img/window_sheet_07.png") 4 4 4 4 stretch;
+    border-width: 4px 4px 4px 4px;
+    border-image-width: 4px 4px 4px 4px;
+
+    width: 528px;
+    height: 352px;
+
+    padding: 1px 40px 1px 40px;
+
+    background-image: url("../img/window_sheet_07_int.png");
+    background-repeat: repeat;
+
+    animation-name: alpha_in;
+    animation-duration: 0.5s;
+    -webkit-animation-name: alpha_in;
+    -webkit-animation-duration: 0.5s;
+}
+
+div.loginerror
+{
+    font-family: Impact, sans-serif;
+    color: rgba(255, 92, 92, 1.0);
+    width: 100%;
+    height: 50px;
+    padding: 1px;
+    margin-top: 10px;
+}
+
+div.logininfo
+{
+    font-family: Impact, sans-serif;
+    font-size: 15pt;
+    color: white;
+    padding: 1px;
+    margin-top: 40px;
+    width: 250px;
+    margin-left: 200px
+}
+
+button.style1
+{
+    background-color: rgba(45, 47, 51, 1.0);
+    border: 1px dashed rgba(62, 86, 132, 1.0);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-shadow: 1px 1px black;
+    font-family: Impact, sans-serif;
+    color: rgba(146, 151, 161, 1.0);
+    width: 100%;
+    height: 50px;
+    padding: 1px;
+    margin-top: 10px;
+}
+
+button.style1:hover
+{
+    color: rgba(222, 229, 243, 1.0);
+    background-color: rgba(50, 52, 57, 1.0);
+}
+
+button.cyan_bkg
+{
+    background-color: rgba(20, 44, 50, 1.0);
+    border: 1px dashed rgba(62, 86, 132, 1.0);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-shadow: 1px 1px black;
+    font-family: Impact, sans-serif;
+    color: rgba(146, 151, 161, 1.0);
+    width: 100%;
+    height: 50px;
+    padding: 1px;
+    margin-top: 10px;
+}
+
+button.cyan_bkg:hover
+{
+    color: rgba(222, 229, 243, 1.0);
+    background-color: rgba(44, 65, 70, 1.0);
+    box-shadow: inset 0 0 15px 15px rgba(20, 44, 50, 1.0);
+}
+
+h1
+{
+    font-family: Impact, sans-serif;
+    font-size: 25pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-align: left;
+    margin: 20px 0 0 0;
+    padding: 1px;
+    border: 0;
+    color: white;
+}
+
+h2
+{
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-align: left;
+    margin: 20px 0 0 0;
+    padding: 1px;
+    border: 0;
+    color: rgba(170, 170, 170, 1.0);
+}
+
+hr
+{
+    border: none;
+    height: 1px;
+    margin: 0;
+    /* Set the hr color */
+    color: #333; /* old IE */
+    background-color: #333; /* Modern Browsers */
+}
+
+input
+{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 11pt;
+    font-weight: bold;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+    display: block;
+    border: 0;
+    padding: 2px 2px 2px 5px;
+    margin-top: 2px;
+    color: rgba(117, 121, 128, 1.0);
+
+    width: calc(100% - 6px);
+    background: rgba(64,75,90,0.5);
+    box-shadow: inset 1px 1px 1px 1px rgba(54, 54, 54, 0.9), inset -1px -1px 1px 1px rgba(156, 156, 156, 0.4);
+}
+
+
+section
+{
+    width: 1280px;
+    height: 600px;
+
+    border-style: hidden;
+}
+
+.center
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+
+body {
+    background-color: rgba(5, 6, 7, 1.0);
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers:
+ */
+
+.hidden {
+    display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.black_overlay{
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index:1001;
+    -moz-opacity: 0.8;
+    opacity:.80;
+    filter: alpha(opacity=80);
+}
+
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

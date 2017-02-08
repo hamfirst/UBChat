@@ -1,0 +1,1761 @@
+
+#watermark {
+    height: 100vh;
+    float: right;
+    margin-right: 10vh;
+    opacity: 0.65;
+}
+
+#background {
+    width: 100vw;
+    height: 100vh;
+    z-index: -10;
+}
+
+#chat_logo {
+    position: absolute;
+    height: 160px;
+    width: 160px;
+    float: left;
+    left: 5vw;
+    top: 0;
+    margin-right: 5vw;
+}
+
+#popup_menu {
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
+}
+
+#copyright {
+    position: absolute;
+    height: 10px;
+    bottom: 10px;
+    font-family: TempestaSeven, Verdana, sans-serif;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 5pt;
+    color: rgba(164, 168, 127, 0.7);
+    height: auto;
+    margin-left: 5px;
+    z-index: 100;
+}
+
+
+#copyright.a {
+    color: rgba(164, 168, 127, 0.7);
+}
+
+#main_menu {
+    position: absolute;
+    top: calc(100% - 300px);
+    height: 250px;
+    left: 70px;
+    width: 300px;
+    
+    animation-name: alpha_in;
+    animation-duration: 0.5s;
+    -webkit-animation-name: alpha_in;
+    -webkit-animation-duration: 0.5s;
+}
+
+#main_menu hr {
+    border: none;
+    height: 1px;
+    margin: 20px;
+    /* Set the hr color */
+    color: #111; /* old IE */
+    background-color: #111; /* Modern Browsers */
+}
+
+#login_error
+{
+    font-family: Impact, sans-serif;
+    color: rgba(255, 92, 92, 1.0);
+    width: 100%;
+    height: 30px;
+    padding: 1px;
+    margin-top: 10px;
+}
+
+#chat_container {
+    position: absolute;
+    top: 20vh;
+    left: 40vw;
+    width: 40vw;
+    height: 74vh;
+    float: left;
+}
+
+#chat_content_container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100% - 40px);
+}
+
+#channel_list {
+    text-align: left;
+    margin-left: 20px;
+    padding: 1px;
+    margin-top: 3px;
+    height:auto;
+}
+
+#chat_area_bkg {
+    height: 100%;
+    border-image: url("../img/window_sheet_46.png") 4 4 4 4 stretch;
+    border-width: 4px 4px 4px 4px;
+    border-image-width: 4px 4px 4px 4px;
+    border-style: solid;
+
+    background-image: url("../img/window_sheet_46_int.png");
+    background-repeat: repeat;
+
+    padding: 1px 1px 10px 1px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+#player_list_container {
+    margin-left: 5px;
+    position: absolute;
+    top: 20vh;
+    left: calc(80vw + 13px);
+    width: 200px;
+    height: 74vh;
+    float: left;
+    cursor: default;
+}
+
+#options_container {
+    position: absolute;
+    top: 10vh;
+    right: calc(20vw - 213px);
+    float: left;
+    color: white;
+    cursor: default;
+
+    background-image: url("../img/window_sheet_46_int.png");
+    background-repeat: repeat;
+
+    border-image: url("../img/window_sheet_07.png") 4 4 4 4 stretch;
+    border-image-width: 4px 4px 4px 4px;
+}
+
+#channel_header {
+
+}
+
+
+#chat_input {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14pt;
+    font-weight: bold;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+    display: block;
+    border: 0;
+    padding: 2px 2px 2px 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color: rgba(117, 121, 128, 1.0);
+
+    background: rgba(64,75,90,0.5);
+    box-shadow: inset 1px 1px 1px 1px rgba(54, 54, 54, 0.9), inset -1px -1px 1px 1px rgba(156, 156, 156, 0.4);
+}
+
+#player_list_header {
+    margin: 0 0 0 0;
+    text-align: left;
+}
+
+#player_list {
+    margin: 2px;
+    width: calc(100% - 6px);
+    height: calc(100% - 25px);
+}
+
+#squad_popup {
+    z-index: 10;
+    position: absolute;
+    top: 10vh;
+    left: 10vw;
+    width: 80vw;
+    height: 80vh;
+    float: left;
+
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    color: rgba(170, 170, 170, 1.0);
+    text-align: left;
+}
+
+#settings_popup {
+    z-index: 10;
+    position: absolute;
+    top: 15vh;
+    left: 20vw;
+    width: 60vw;
+    height: 60vh;
+    /*float: left;*/
+
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    color: rgba(170, 170, 170, 1.0);
+    text-align: left;
+}
+
+#demo_list_popup {
+    z-index: 10;
+    position: absolute;
+    top: 15vh;
+    left: 20vw;
+    width: 60vw;
+    height: 60vh;
+    float: left;
+
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    color: rgba(170, 170, 170, 1.0);
+    text-align: left;
+}
+
+#map_list_popup {
+    z-index: 10;
+    position: absolute;
+    top: 15vh;
+    left: 20vw;
+    width: 60vw;
+    height: 60vh;
+    float: left;
+
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    color: rgba(170, 170, 170, 1.0);
+    text-align: left;
+}
+
+#create_game_popup {
+    z-index: 10;
+    position: absolute;
+    top: 15vh;
+    left: 20vw;
+    width: 60vw;
+    height: 60vh;
+    float: left;
+
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    color: rgba(170, 170, 170, 1.0);
+    text-align: left;
+}
+
+#server_pick_popup {
+    z-index: 10;
+    position: absolute;
+    top: 15vh;
+    left: 20vw;
+    width: 60vw;
+    height: 60vh;
+    float: left;
+
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    color: rgba(170, 170, 170, 1.0);
+    text-align: left;
+}
+
+#text_edit_popup {
+    z-index: 10;
+    position: absolute;
+    top: 10vh;
+    left: 10vw;
+    width: 80vw;
+    height: 80vh;
+    float: left;
+
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    color: rgba(170, 170, 170, 1.0);
+    text-align: left;
+}
+
+#server_list_container {
+    position: absolute;
+    top: 63vh;
+    left: 2vw;
+    width: 36vw;
+    height: calc(31vh + 3px);
+    float: left;
+    cursor: default;
+}
+
+#server_list {
+    margin: 2px;
+    width: calc(100% - 6px);
+    height: calc(100% - 40px);
+}
+
+#server_list_create_game {
+    position: absolute;
+    top: -3px;
+    right: 5px;
+    height: 30px;
+    width: calc(50% - 50px);
+}
+
+#server_pick_cancel_button {
+    position: absolute;
+    bottom: 3px;
+    height: 40px;
+    right: 10px;
+    width: 130px;
+}
+
+#server_pick_button_container {
+    display:flex;
+    flex-wrap:wrap;
+    width:calc(100% - 10px);
+    height:calc(100% - 120px);
+    overflow-y:auto;
+    overflow-x:hidden;
+    background-color: rgb(24, 29, 41);
+
+    padding: 1px 1px 10px 1px;
+}
+
+#game_lobby_container {
+    display: block;
+    position: absolute;
+    float: left;
+    cursor: default;
+    z-index: 5;
+}
+
+#game_preview_container {
+    z-index: 10;
+    position: absolute;
+    top: 45vh;
+    left: 20vw;
+    width: 330px;
+    height: 30vh;
+    /*float: left;*/
+
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    color: rgba(170, 170, 170, 1.0);
+    text-align: left;
+
+    display: none;
+}
+
+#lobby_info_container {
+    position: absolute;
+    top: 20vh;
+    left: 2vw;
+    width: 36vw;
+    height: 40vh;
+    transition: all 0.3s;
+    border: 1px dotted #2a4d76;
+    background-color: rgba(14, 19, 26, 1.0);
+    padding: 4px;
+    color:lightgray;
+    text-align: left;
+    font-family: Verdana, sans-serif;
+    font-size: 10pt;
+    padding: 5px 5px 5px 5px
+}
+
+#create_game_map_list {
+    position: absolute;
+    top: 71px;
+    left: 5px;
+    width: 190px;
+    bottom: 10px;
+}
+
+#create_game_options_container {
+    position: absolute;
+    top: 49px;
+    left: 205px;
+    width: calc(100% - 210px);
+    bottom: 10px;
+}
+
+#create_game_map_info {
+    position: absolute;
+    top: calc(100% - 142px);
+    margin: 0;
+    width: calc(165px);
+    height: calc(80px);
+    float: left;
+    font-family: Arial, sans-serif;
+    font-size: 8pt;
+    white-space: nowrap;
+    text-align: left;
+    color: lightblue;
+    padding-top: 2px;
+}
+
+#create_game_cancel_button {
+    position: absolute;
+    height: 50px;
+    width: 200px;
+    left: 0px;
+    bottom: 1px;
+}
+
+#profile_popup {
+    z-index: 10;
+    position: absolute;
+    top: 15vh;
+    left: 20vw;
+    width: 60vw;
+    height: 60vh;
+    /*float: left;*/
+
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    color: rgba(170, 170, 170, 1.0);
+    text-align: left;
+}
+
+#stats_popup {
+    z-index: 10;
+    position: absolute;
+    top: 15vh;
+    left: 20vw;
+    width: 60vw;
+    height: 60vh;
+    /*float: left;*/
+
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    color: rgba(170, 170, 170, 1.0);
+    text-align: left;
+}
+
+#create_game_create_button {
+    position: absolute;
+    height: 50px;
+    width: calc(100% - 207px);
+    left: 202px;
+    bottom: 1px;
+}
+
+div.game_lobby_container {
+    top: 20vh;
+    left: 2vw;
+    width: 36vw;
+    height: 40vh;
+    transition: all 0.3s;
+}
+
+div.game_lobby_container_full {
+    top: 15vh;
+    left: 15vw;
+    width: 70vw;
+    height: 70vh;
+    transition: all 0.3s;
+}
+
+#game_lobby_player_list {
+    margin: 2px;
+    width: calc(170px);
+    height: calc(100% - 190px);
+    float: left;
+}
+
+#game_lobby_map_info {
+    position: absolute;
+    top: calc(100% - 92px);
+    margin: 0;
+    width: calc(165px);
+    height: calc(80px);
+    float: left;
+    font-family: Arial, sans-serif;
+    font-size: 8pt;
+    white-space: nowrap;
+    text-align: left;
+    color: lightblue;
+    padding-top: 2px;
+}
+
+#game_lobby_chat_area_bkg {
+    height: calc(100% - 70px);
+    border-image: url("../img/window_sheet_46.png") 4 4 4 4 stretch;
+    border-width: 4px 4px 4px 4px;
+    border-image-width: 4px 4px 4px 4px;
+    border-style: solid;
+
+    background-image: url("../img/window_sheet_46_int.png");
+    background-repeat: repeat;
+
+    padding: 1px 1px 10px 1px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#game_lobby_chat_input {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14pt;
+    font-weight: bold;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+    border: 0;
+    padding: 2px 2px 2px 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 180px;
+    width: calc(100% - 190px);
+    color: rgba(117, 121, 128, 1.0);
+
+    background: rgba(64,75,90,0.5);
+    box-shadow: inset 1px 1px 1px 1px rgba(54, 54, 54, 0.9), inset -1px -1px 1px 1px rgba(156, 156, 156, 0.4);
+}
+
+#game_lobby_start_button {
+    position: absolute;
+    top: calc(100% - 170px);
+    left: 5px;
+    width: 170px;
+    height: 30px;
+}
+
+#game_lobby_leave_button {
+    position: absolute;
+    top: calc(100% - 135px);
+    left: 5px;
+    width: 85px;
+    height: 30px;
+}
+
+#game_lobby_switch_button {
+    position: absolute;
+    top: calc(100% - 135px);
+    left: 91px;
+    width: 84px;
+    height: 30px;
+}
+
+#game_lobby_expand {
+    right: 4px;
+    top: 1px;
+    transform: rotate(90deg);
+}
+
+#game_preview_player_list {
+    position: absolute;
+    top: 30px;
+    height: calc(100% - 35px);
+    width: 150px;
+}
+
+#game_preview_join_button {
+    position: absolute;
+    top: 25px;
+    right: 5px;
+    width: 170px;
+    height: 30px;
+}
+
+#game_preview_observe_button {
+    position: absolute;
+    top: 60px;
+    right: 5px;
+    width: 170px;
+    height: 30px;
+}
+
+#settings_selector {
+
+}
+
+#option_controls_container {
+    margin-left: 150px;
+    position: absolute;
+    height: calc(100% - 50px);
+    width: calc(100% - 160px);
+    overflow-y: auto;
+}
+
+#graphics_options {
+    display: none;
+}
+
+#audio_options {
+    display: none;
+}
+
+#controls_options {
+    /*display: none;*/
+}
+
+#settings_popup_bkg {
+
+}
+
+#squad_controls_container {
+    margin-left: 130px;
+    position: absolute;
+    height: calc(100% - 50px);
+    width: calc(100% - 140px);
+    overflow-y: auto;
+}
+
+#squad_create {
+    display: none;
+}
+
+#squad_disband {
+    display: none;
+}
+
+#squad_join {
+    display: none;
+}
+
+#squad_manage_empty {
+    display: none;
+}
+
+#squad_manage {
+    /*display: none;*/
+}
+
+#squad_manage_members {
+    display: none;
+}
+
+#squad_manage_invites {
+    /*display: none;*/
+}
+
+#squad_manage_applications {
+    display: none;
+}
+
+#squad_manage_channel {
+    display: none;
+}
+
+#squad_manage_leave {
+    display: none;
+}
+
+#squad_manage_member_list {
+    height: 200px;
+    width: 380px;
+    margin-right:10%;
+}
+
+#squad_manage_invite_list {
+    height: 200px;
+    width: 380px;
+    margin-right:10%;
+}
+
+#squad_manage_application_list {
+    height: 200px;
+    width: 380px;
+    margin-right:10%;
+}
+
+#chat_options {
+    /*display: none;*/
+}
+
+#profile_stats_options {
+    display: none;
+}
+
+#stats_options {
+    display: none;
+}
+
+#profile_current_icon {
+    width: 32px;
+    height: 32px;
+}
+
+#control_override_popup_bkg {
+    z-index: 14;
+}
+
+#control_override_popup {
+    z-index: 15;
+    position: absolute;
+    top: 40vh;
+    left: 30vw;
+    width: 40vw;
+    height: 20vh;
+    float: left;
+
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    color: rgba(170, 170, 170, 1.0);
+    text-align: center;
+}
+
+#control_override_label {
+    margin-top: 5vh;
+    margin-left: 10px;
+    text-align: center;
+}
+
+#control_override_cancel_button {
+    width: 150px;
+    text-align: center;
+    horiz-align: center;
+    margin-top: 20px;
+}
+
+text_prompt_popup_bkg {
+    z-index: 
+}
+
+#text_prompt_popup {
+    position: absolute;
+    top: 37vh;
+    left: 30vw;
+    width: 40vw;
+    height: 25vh;
+    float: left;
+
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    color: rgba(170, 170, 170, 1.0);
+    text-align: center;
+}
+
+#text_prompt {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+#text_prompt_input {
+    margin-bottom: 20px;
+    width: 80%;
+    margin-left: 10%;
+}
+
+#control_override_popup_bkg {
+    z-index: 14;
+}
+
+#control_override_popup {
+    z-index: 15;
+}
+
+#runtime_error_popup_bkg {
+    z-index: 40;
+}
+
+#runtime_error_popup {
+    z-index: 41;
+    position: absolute;
+    top: 40vh;
+    left: 30vw;
+    width: 40vw;
+    height: 20vh;
+    float: left;
+
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    color: rgba(170, 170, 170, 1.0);
+    text-align: center;
+}
+
+#runtime_error_popup_msg {
+    margin-top: 5vh;
+    margin-left: 10px;
+    text-align: center;
+}
+
+#runtime_error_dismiss {
+    width: 150px;
+    text-align: center;
+    horiz-align: center;
+    margin-top: 20px;
+}
+
+#squad_manage_container {
+    position: absolute;
+    height: calc(100% - 90px);
+    width: 100%;
+    overflow-y: auto;
+}
+
+#squad_disband_popup_bkg {
+    z-index: 30;
+    display: none;
+}
+
+#squad_disband_popup {
+    z-index: 31;
+    position: absolute;
+    top: 40vh;
+    left: 30vw;
+    width: 40vw;
+    height: 20vh;
+    float: left;
+
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    color: rgba(170, 170, 170, 1.0);
+    text-align: center;
+}
+
+#squad_disband_popup_msg {
+    margin-top: 5vh;
+    margin-left: 10px;
+    text-align: center;
+}
+
+@font-face {
+    font-family: Vibrocentric;
+    src: url("../fonts/vibrocentric%20rg%20it.otf");
+}
+
+@font-face {
+    font-family: TempestaSeven;
+    src: url("../fonts/pf_tempesta_seven.ttf");
+}
+
+body {
+    background-color: black;
+}
+
+div.black_bkg {
+    background-color: black;
+}
+
+div.general_box {
+    border-image: url("../img/window_sheet_07.png") 4 4 4 4 stretch;
+    border-image-width: 4px 4px 4px 4px;
+    border-style: solid;
+    padding: 4px 4px 4px 4px;
+    background-image: url("../img/window_sheet_07_int.png");
+    background-repeat: repeat;
+    animation-name: alpha_in;
+    animation-duration: 0.5s;
+    -webkit-animation-name: alpha_in;
+    -webkit-animation-duration: 0.5s;
+}
+
+div.blue_box {
+    border: 1px dotted #2a4d76;
+    padding: 4px 4px 4px 4px;
+    background-color: #1d2432;
+    animation-name: alpha_in;
+    animation-duration: 0.5s;
+    -webkit-animation-name: alpha_in;
+    -webkit-animation-duration: 0.5s;
+}
+
+div.red_box {
+    border: 1px dotted #761b23;
+    padding: 4px 4px 4px 4px;
+    background-color: #320b06;
+    animation-name: alpha_in;
+    animation-duration: 0.5s;
+    -webkit-animation-name: alpha_in;
+    -webkit-animation-duration: 0.5s;
+}
+
+div.blue_interior {
+    background-color: rgba(50, 55, 70 , 1.0);
+    box-shadow: inset 2px 2px 3px 0 rgba(29, 33, 40, 1.0), inset -2px -2px 3px 0 rgba(81, 90, 102, 1.0);
+
+    border-width: 1px;
+    padding: 1px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+div.strong_header {
+    font-family: Impact, sans-serif;
+    font-size: 16pt;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-align: left;
+    padding: 1px 30px 1px 1px;
+    color: white;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+
+div.weak_header {
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    padding: 1px;
+    border: 0;
+    color: rgba(170, 170, 170, 1.0);
+    text-align: left;
+}
+
+div.base_text {
+    float: left;
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    padding: 1px;
+    border: 0;
+    color: rgba(170, 170, 170, 1.0);
+    text-align: left;
+    margin-right: 10px;
+    margin-left: 15px;
+}
+
+div.control_override_label {
+    float: left;
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    padding: 1px;
+    border: 0;
+    color: rgba(170, 170, 170, 1.0);
+    text-align: left;
+    width: 170px;
+    margin-right: 10px;
+    margin-left: 15px;
+}
+
+div.settings_control_border {
+    border-top: 1px solid #334;
+}
+
+div.popup_bkg {
+    z-index: 9;
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+div.popup_bkg:target {
+    display: table;
+    position: absolute;
+}
+
+div.popup_menu_bkg {
+    z-index: 100;
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+div.popup_menu_bkg:target {
+    display: table;
+    position: absolute;
+}
+
+div.popup_menu_element {
+    color: lightgray;
+    text-align: left;
+
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+    padding-left: 10px;
+    padding-right: 3px;
+}
+
+div.popup_menu_element:hover {
+    background: #103c42;
+}
+
+div.chat_element
+{
+    width: auto;
+    height: auto;
+    border-bottom: 1px solid black;
+    background-color: rgba(200, 200, 200, 0.10);
+    margin-top: 3px;
+}
+
+div.chat_element_server_message 
+{
+    font-family: Courier New, Courier, monospace;
+    font-size: 9pt;
+    text-align: left;
+    color: lightgray;
+    
+    font-weight: bold;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    white-space: pre-wrap;
+}
+
+div.chat_element_motd
+{
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: lightgray;
+    
+    font-weight: bold;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    white-space: pre-wrap;
+}
+
+div.chat_element_name
+{
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-align: right;
+    color: rgba(194, 204, 186, 1);
+    margin-right: 3px;
+    margin-top: 1px;
+    margin-bottom: -1px;
+    float: left;
+    height: 17px;
+    overflow: hidden;
+}
+
+div.chat_element_text
+{
+    font-family: Verdana, sans-serif;
+    font-size: 10pt;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-align: left;
+    color: rgba(220, 227, 241, 0.9);
+    height: auto;
+    padding-bottom: 1px;
+    margin-top: -3px;
+    margin-left: 33px;
+
+    white-space: pre-wrap;      /* CSS3 */
+    white-space: -moz-pre-wrap; /* Firefox */
+    white-space: -pre-wrap;     /* Opera <7 */
+    white-space: -o-pre-wrap;   /* Opera 7 */
+    word-wrap: break-word;      /* IE */
+}
+
+div.chat_element_time
+{
+    font-family: TempestaSeven, Verdana, sans-serif;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 6pt;
+    color: rgba(222, 229, 243, 0.7);
+    display: inline-block;
+    width: 35px;
+    text-align: left;
+    vertical-align: text-top;
+}
+
+
+div.chat_element_title {
+    font-family: TempestaSeven, Verdana, sans-serif;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 5pt;
+    color: rgba(164, 168, 127, 0.7);
+    height: auto;
+    margin-left: 5px;
+    margin-top: -2px;
+}
+
+div.player_list_element {
+    width: auto;
+    height: auto;
+    border: 1px solid black;
+    display: block;
+    background-color: rgba(27, 33, 44, 0.5);
+    box-shadow: inset 5px 5px 15px 15px rgba(200, 200, 200, 0.05), inset -5px -5px 15px 15px rgba(200, 200, 200, 0.05);
+    padding: 0 0 0 0;
+
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 11pt;
+    text-align: left;
+    margin-bottom: -1px;
+}
+
+div.player_list_element:hover {
+    background-color: rgba(65, 72, 86, 0.5);
+}
+
+div.server_list_element {
+    width: auto;
+    height: auto;
+    border: 1px solid black;
+    display: block;
+    background-color: rgba(27, 33, 44, 0.5);
+    box-shadow: inset 5px 5px 15px 15px rgba(200, 200, 200, 0.05), inset -5px -5px 15px 15px rgba(200, 200, 200, 0.05);
+    padding: 0 5px 0 5px;
+    text-align: left;
+    margin-bottom: -1px;
+
+    color: lightgray;
+    font-family: Arial, sans-serif;
+    font-size: 11pt;
+    cursor:pointer;
+}
+
+div.server_list_element:hover {
+    background-color: rgba(65, 72, 86, 0.5);
+}
+
+div.game_player_list_element {
+    border: 0; 
+    padding-left: 20px;
+    font-size: 10pt;
+    color: lightgray;
+}
+
+div.server_list_element:hover {
+    color: white;
+    font-weight: bold;
+}
+
+div.server_list_game {
+    width: calc(100% - 26px);
+    height: 20px;
+    border: 1px solid black;
+    display: block;
+    background-color: rgba(60, 70, 110, 0.5);
+    padding: 0 5px 0 5px;
+    margin-left: 20px;
+    margin-bottom: -1px;
+    text-align: left;
+    color: lightgray;
+    font-weight: normal;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+div.server_list_game:hover {
+    color: white;
+    font-weight: bold;
+}
+
+div.map_list_element {
+    width: auto;
+    height: auto;
+    border: 1px solid black;
+    display: block;
+    background-color: rgba(27, 33, 44, 0.5);
+    box-shadow: inset 5px 5px 15px 15px rgba(200, 200, 200, 0.05), inset -5px -5px 15px 15px rgba(200, 200, 200, 0.05);
+    padding: 0 5px 0 5px;
+    text-align: left;
+    margin-bottom: -1px;
+
+    color: lightgray;
+    font-family: Arial, sans-serif;
+    font-size: 11pt;
+    cursor:pointer;
+}
+
+div.map_list_element:hover {
+    color: white;
+    background-color: rgba(45, 57, 69, 0.5);
+}
+
+div.map_list_element_selected {
+    width: auto;
+    height: auto;
+    border: 1px solid black;
+    display: block;
+    background-color: rgba(64, 70, 156, 0.5);
+    box-shadow: inset 5px 5px 15px 15px rgba(200, 200, 200, 0.05), inset -5px -5px 15px 15px rgba(200, 200, 200, 0.05);
+    padding: 0 5px 0 5px;
+    text-align: left;
+    margin-bottom: -1px;
+
+    color: lightgray;
+    font-family: Arial, sans-serif;
+    font-size: 11pt;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+div.map_list_element_title {
+    width: auto;
+    height: auto;
+    border: 1px solid black;
+    display: block;
+    background-color: rgba(27, 33, 44, 1);
+    box-shadow: inset 5px 5px 15px 15px rgba(200, 200, 200, 0.05), inset -5px -5px 15px 15px rgba(200, 200, 200, 0.05);
+    padding: 0 5px 0 5px;
+    text-align: left;
+    margin-bottom: -1px;
+
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 11pt;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+div.generic_list_element {
+    width: auto;
+    height: auto;
+    border: 1px solid black;
+    display: block;
+    background-color: rgba(27, 33, 44, 0.5);
+    box-shadow: inset 5px 5px 15px 15px rgba(200, 200, 200, 0.05), inset -5px -5px 15px 15px rgba(200, 200, 200, 0.05);
+    padding: 0 0 0 0;
+
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 11pt;
+    text-align: left;
+    margin-bottom: -1px;
+}
+
+div.generic_list_element:hover {
+    background-color: rgba(65, 72, 86, 0.5);
+}
+
+div.generic_list_element_selected {
+    font-weight: bold;
+    background-color: rgba(70, 77, 105, 0.8);
+}
+
+div.popup_close {
+    position: absolute;
+    background-color: rgba(200, 200, 200, 0.05);
+    right: 4px;
+    top: 4px;
+    text-decoration: none;
+    user-select: none;
+}
+
+div.popup_close a {
+    height: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgba(164, 168, 127, 0.5);
+    border: 1px solid black;
+    margin-top: 10px;
+    padding: 0px 4px 3px 3px;
+    text-decoration: none;
+}
+
+div.popup_close a:hover ,
+div.popup_close a:focus {
+    color: rgba(200, 200, 200, 0.8);
+    text-shadow: -1px 0 rgba(200, 200, 200, 0.2), 0 1px rgba(200, 200, 200, 0.2), 1px 0 rgba(200, 200, 200, 0.2), 0 -1px rgba(200, 200, 200, 0.2);
+    cursor: pointer;
+}
+
+div.popup_selector {
+    position: absolute;
+    background-color: #0d0f23;
+    height: calc(100% - 55px);
+    width: 120px;
+    border: solid 1px black;
+}
+
+div.popup_list_bkg {
+    position: absolute;
+    background-color: #0d0f23;
+    height: calc(100% - 85px);
+    width: calc(100% - 10px);
+    border: solid 1px black;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+div.cyan_bkg {
+    background-color: rgba(11, 40, 44 , 1.0);
+    box-shadow: inset 2px 2px 3px 0 rgba(60, 74, 76, 1.0), inset -2px -2px 3px 0 rgba(33, 41, 43, 1.0);
+
+    border-width: 4px 4px 4px 4px;
+    border-image-width: 4px 4px 4px 4px;
+    padding: 4px 4px 4px 4px;
+
+    animation-name: alpha_in;
+    animation-duration: 0.5s;
+    -webkit-animation-name: alpha_in;
+    -webkit-animation-duration: 0.5s;
+}
+
+div.mega_header {
+    font-family: Impact, sans-serif;
+    font-size: 25pt;
+    font-weight: normal;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-align: left;
+    margin: 20px 0 0 0;
+    padding: 1px;
+    border: 0;
+    color: white;
+}
+
+hr.chat_element_title_separator {
+    border: none;
+    height: 1px;
+    margin: 0;
+    /* Set the hr color */
+    color: #333; /* old IE */
+    background-color: #333; /* Modern Browsers */
+}
+
+hr.header_separator {
+    display: block;
+    height: 1px;
+    border: 0;
+    padding: 0;
+
+    border: none;
+    margin-top: 2px;
+    margin-bottom: 8px;
+    /* Set the hr color */
+    color: #333; /* old IE */
+    background-color: #333;
+}
+
+hr.popup_menu_separator {
+    display: block;
+    height: 1px;
+    border: 0;
+    padding: 0;
+
+    border: none;
+    margin-top: 2px;
+    margin-bottom: 8px;
+    /* Set the hr color */
+    color: #333; /* old IE */
+    background-color: #333;
+    margin-left: 10px;
+}
+
+button.channel_button
+{
+    background-color: rgba(57, 64, 76, 1.0);
+    transform: skew(-20deg);
+    border: 1px solid rgba(70, 70, 76, 0);
+    display:inline-block;
+    cursor:pointer;
+    color:rgba(146, 151, 161, 1.0);
+    font-family: Impact, sans-serif;
+    font-size:15px;
+    padding:4px 10px;
+    text-decoration:none;
+    text-shadow: 1px 1px black;
+    box-shadow: inset 3px 3px 3px 3px rgba(28, 36, 50, 0.4), inset -3px -3px 3px 3px rgba(28, 36, 50, 0.4);
+}
+
+button.channel_button_selected
+{
+    z-index: 1;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: rgba(98, 118, 156, 1.0);
+    border: 1px solid rgba(145, 180, 256, 1.0);
+    transform: skew(-20deg);
+    display:inline-block;
+    cursor:pointer;
+    color: white;
+    font-family: Impact, Geneva, sans-serif;
+    font-size:17px;
+    font-kerning: normal;
+    padding:4px 10px;
+    text-decoration:none;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    box-shadow: inset 0 0 10px 5px rgba(35, 23, 77, 0.25), 0 0 30px 2px rgba(103, 150, 241, 1.0);
+}
+
+button.channel_button_new_text {
+    text-decoration: underline;
+    color: #B4DFA1;
+}
+
+button.control_override {
+    width: 150px;
+    background: #8eadc2;
+    background-image: -webkit-linear-gradient(top, #8eadc2, #6394b0);
+    background-image: -moz-linear-gradient(top, #8eadc2, #6394b0);
+    background-image: -ms-linear-gradient(top, #8eadc2, #6394b0);
+    background-image: -o-linear-gradient(top, #8eadc2, #6394b0);
+    background-image: linear-gradient(to bottom, #8eadc2, #6394b0);
+    border-radius: 2px;
+    border: none;
+    text-shadow: 1px 1px 3px #666666;
+    color: #f5e4f5;
+    font-size: 14px;
+    padding: 2px 0 2px 0;
+    text-decoration: none;
+    margin-bottom: 2px;
+    display: inline;
+}
+
+button.control_override:hover {
+    background: #6780db;
+    background-image: -webkit-linear-gradient(top, #6780db, #4069cf);
+    background-image: -moz-linear-gradient(top, #6780db, #4069cf);
+    background-image: -ms-linear-gradient(top, #6780db, #4069cf);
+    background-image: -o-linear-gradient(top, #6780db, #4069cf);
+    background-image: linear-gradient(to bottom, #6780db, #4069cf);
+    text-decoration: none;
+}
+
+button.style1
+{
+    background-color: rgba(45, 47, 51, 1.0);
+    border: 1px dashed rgba(62, 86, 132, 1.0);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-shadow: 1px 1px black;
+    font-family: Impact, sans-serif;
+    color: rgba(146, 151, 161, 1.0);
+    width: 100%;
+    height: 50px;
+    padding: 1px;
+    margin-top: 10px;
+}
+
+button.style1:hover
+{
+    color: rgba(222, 229, 243, 1.0);
+    background-color: rgba(50, 52, 57, 1.0);
+}
+
+button.style2
+{
+    background-color: rgba(6, 7, 7, 1.0);
+    border: 1px dashed rgba(27, 37, 57, 1.0);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-shadow: 1px 1px black;
+    font-family: Impact, sans-serif;
+    color: rgba(146, 151, 161, 1.0);
+    width: 100%;
+    height: 40px;
+    padding: 1px;
+    margin-top: 10px;
+}
+
+button.style2:hover
+{
+    color: rgba(222, 229, 243, 1.0);
+    background-color: rgba(10, 11, 12, 1.0);
+}
+
+button.style3
+{
+    background-color: rgba(60, 62, 88, 1.0);
+    border: 1px dashed rgba(62, 86, 132, 1.0);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-shadow: 1px 1px black;
+    font-family: Impact, sans-serif;
+    color: rgba(146, 151, 161, 1.0);
+    width: 100%;
+    height: 50px;
+    padding: 1px;
+    margin-top: 10px;
+}
+
+button.style3:hover
+{
+    color: rgba(256, 256, 256, 1.0);
+    background-color: rgba(100, 107, 150, 1.0);
+    border: 1px dashed rgba(118, 172, 250, 1.0);
+    text-shadow: 1px 1px rgba(20, 20, 20, 1.0);
+}
+
+button.cyan_bkg
+{
+    background-color: rgba(20, 44, 50, 1.0);
+    border: 1px dashed rgba(62, 86, 132, 1.0);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-shadow: 1px 1px black;
+    font-family: Impact, sans-serif;
+    color: rgba(146, 151, 161, 1.0);
+    width: 100%;
+    height: 50px;
+    padding: 1px;
+    margin-top: 10px;
+}
+
+button.cyan_bkg:hover
+{
+    color: rgba(222, 229, 243, 1.0);
+    background-color: rgba(44, 65, 70, 1.0);
+    box-shadow: inset 0 0 15px 15px rgba(20, 44, 50, 1.0);
+}
+
+button.game_server_button {
+    width:32%;
+    height:30%;
+    margin-right:2px;
+    margin-top:0;
+}
+
+select.settings_dropdown {
+    display: block;
+    margin: 1px 10px 10px 10px;
+    appearance: none;
+    background-color: rgba(70, 70, 76, 0);
+    width: 200px;
+    color: rgba(146, 151, 161, 1.0);
+    border: 1px solid rgba(57, 64, 76, 1.0);
+}
+
+input.settings_checkbox {
+    padding: 10px;
+    width: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: rgba(70, 70, 76, 0);
+}
+
+input.settings_slider {
+    padding: 0;
+    margin-left: 10px;
+    width: 160px;
+}
+
+input[type="text"], input[type="password"], input[type="number"] {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 11pt;
+    font-weight: bold;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+    display: block;
+    border: 0;
+    padding: 2px 2px 2px 5px;
+    margin-top: 2px;
+    color: rgba(117, 121, 128, 1.0);
+
+    width: calc(100% - 6px);
+    background: rgba(64,75,90,0.5);
+    box-shadow: inset 1px 1px 1px 1px rgba(54, 54, 54, 0.9), inset -1px -1px 1px 1px rgba(156, 156, 156, 0.4);
+}
+
+textarea {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 11pt;
+    font-weight: bold;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+    display: block;
+    user-select: text;
+    border: 0;
+    padding: 2px 2px 2px 5px;
+    margin-top: 2px;
+    color: rgba(117, 121, 128, 1.0);
+
+    width: calc(100% - 10px);
+    background: rgba(64,75,90,0.5);
+    box-shadow: inset 1px 1px 1px 1px rgba(54, 54, 54, 0.9), inset -1px -1px 1px 1px rgba(156, 156, 156, 0.4);
+
+}
+
+img.server_list_icon {
+    margin-top: -5px;
+}
+
+ul.options_list {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.file_name_list {
+    padding: 0 0 40px 20px;
+    margin: 0;
+}
+
+li.options_list_elem {
+    display: inline;
+    height: 100%;
+}
+
+li.options_list_elem a {
+    color: #aab;
+    text-decoration: none;
+    height: 100%;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+li.options_list_elem a:hover {
+    background-color: #557;
+    color: white;
+}
+
+li.options_list_elem_selected a {
+    background-color: rgba(84, 84, 119, 0.5);
+    color: white;
+}
+
+ul.popup_list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li.popup_list_elem {
+    height: 100%;
+    width: calc(100% - 10px);
+    margin-top: 0;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    color: #aab;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+li.popup_list_elem:hover {
+    background-color: #557;
+    color: white;
+}
+
+li.popup_list_elem_selected {
+    background-color: #335;
+    color: white;
+}
+
+li.file_name_list_elem {
+    height: 100%;
+    width: calc(100% - 10px);
+    margin-top: 0;
+    padding-left: 10px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+
+    color: #aab;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+li.file_name_list_elem:hover {
+    background-color: #557;
+    color: white;
+}
+
+#player_list_toggle {
+    display: none;
+}
+
+@media (max-width: 900px){
+    #lobby_info_container, #server_list_container {
+        display:none;
+    }
+
+    #chat_container {
+        left: 2vw;
+        width: calc(96vw - 230px);
+    }
+
+    #player_list_container {
+        left: initial;
+        right: 2vw;
+    }
+    #options_container {
+        right: 2vw;
+    }
+}
+@media (max-width: 600px){
+    #options_container {
+        display: none;
+    }
+    #player_list_container {
+        right: initial;
+        left: calc(100% - 2vw);
+        top: 45px;
+        height: calc(82vh - 45px);
+        display: none;
+    }
+    #player_list_container.player_list_open {
+        left: calc(100% - 220px);
+        -webkit-transition: left 1s ease-in-out;
+        -moz-transition: left 1s ease-in-out;
+        -ms-transition: left 1s ease-in-out;
+        -o-transition: left 1s ease-in-out;
+        transition: left 1s ease-in-out; 
+        display: block;
+    }
+    #player_list_toggle {
+        display: block;
+        position: absolute;
+        content: url("../img/icons/ingame.png");
+        width: 20px;
+        top: 5px;
+        right: 3vw;
+        z-index: 1;
+        padding: 8px;
+        cursor: pointer;
+    }
+    #chat_container {
+        top: 45px;
+        left: 2vw;
+        width: 94vw;
+        height: calc(82vh - 45px);
+    }
+    #chat_logo {
+        height: 40px;
+        width: 40px;
+    }
+    #copyright {
+        display: none;
+    }
+}
