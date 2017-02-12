@@ -77,7 +77,7 @@ var squad_popup_html = `
 
                     <div class="base_text" style="text-align:center;font-size:8pt;padding-bottom:10px;float:none;margin:auto;">
                         To join a squad, you can either apply to a squad and have a squad manager<br/>
-                        accept your application, or a squad can send you and invite that you can later<br />
+                        accept your application, or a squad can send you an invite that you can later<br />
                         accept on your own terms.<br />
                         &nbsp;<br />
                         You can be in multiple squads simultaneously, but you can only have one primary squad<br />
@@ -141,17 +141,18 @@ var squad_popup_html = `
                                 <div class="weak_header">Current Rank:</div>
                                 <div id="squad_member_current_rank" class="weak_header" style="margin-left:20px">Leader</div>
                                 <br />
-                                <div class="weak_header">Set Rank:</div>
-                                <select id="squad_member_set_rank" class="settings_dropdown" onchange="ChangeRank();">
-                                    <option>Honorary Member</option>
-                                    <option>Member</option>
-                                    <option>Leader</option>
-                                    <option>Manager</option>
-                                    <option>Owner</option>
-                                </select>                 
-                                <br />
-
-                                <button class="style3" style="margin-top:100px;" onclick="RemoveCurrentMember();">Remove Member</button>
+                                <div id="squad_rank_container">
+                                    <div class="weak_header">Set Rank:</div>
+                                    <select id="squad_member_set_rank" class="settings_dropdown" onchange="ChangeRank();">
+                                        <option>Honorary Member</option>
+                                        <option>Member</option>
+                                        <option>Leader</option>
+                                        <option>Manager</option>
+                                        <option>Owner</option>
+                                    </select>
+                                    <br />
+                                    <button class="style3" style="margin-top:100px;" onclick="RemoveCurrentMember();">Remove Member</button>
+                                </div>                 
                             </div>
                         </div>
 
@@ -251,6 +252,7 @@ var squad_invite_list = null;
 
 var active_squad_category = 0;
 var active_synced_squad = 0;
+var active_synced_squad_rank = 0;
 var active_synced_member = -1;
 
 var squad_pages = [];
@@ -418,14 +420,40 @@ function SyncSquadManage(squad_id) {
 
         document.getElementById("squad_motd").value = local_data.m_Squads[squad_id].m_Motd;
         document.getElementById("squad_manage_channel_lock").checked = local_data.m_Squads[squad_id].m_Locked;
+        
+        RenderUserManagement();
+    }
+}
+
+function RenderUserManagement() {
+    active_synced_squad_rank = GetActiveSyncedSquadRank();
+
+    var canManageUsers = (active_synced_squad_rank === "Manager" || active_synced_squad_rank === "Owner")
+    
+    if(canManageUsers) {
+        document.getElementById("squad_rank_container").style.display = "block";
+    }
+    else {
+        document.getElementById("squad_rank_container").style.display = "none";
+    }
+}
+
+function GetActiveSyncedSquadRank() {  
+    var currentSyncedSquad = local_data.m_Squads[active_synced_squad];
+    
+    for(var x = 0; x < Object.keys(currentSyncedSquad.m_Users).length; x++) {
+        if(currentSyncedSquad.m_Users[x].m_UserKey === local_data.m_UserKey) {
+            return GetRankName(currentSyncedSquad.m_Users[x].m_MembershipFlags);
+        }
     }
 }
 
 function SyncSquadManageMember(member_index) {
     if(active_synced_squad in local_data.m_Squads) {
         if(member_index in local_data.m_Squads[active_synced_squad].m_Users) {
+            
             var user = local_data.m_Squads[active_synced_squad].m_Users[member_index];
-
+            
             var date = new Date();
             date.setTime(user.m_Joined * 1000);
 
@@ -435,9 +463,10 @@ function SyncSquadManageMember(member_index) {
             document.getElementById("squad_member_current_rank").innerHTML = GetRankName(user.m_MembershipFlags);
 
             active_synced_member = member_index;
-
+            
             var rank_selection = document.getElementById("squad_member_set_rank");
             rank_selection.selectedIndex = user.m_MembershipFlags - 1;
+            
             return;
         }
     }
