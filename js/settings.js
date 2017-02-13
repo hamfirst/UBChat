@@ -213,6 +213,8 @@ document.onkeydown = function(e) {
 
         capture_keypress_id = -1;
         CloseCaptureKeypressPopup();
+        
+        e.preventDefault();
     }
 }
 
