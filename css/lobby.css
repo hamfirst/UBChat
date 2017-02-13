@@ -581,7 +581,7 @@ div.game_lobby_container_full {
     width: 150px;
 }
 
-#game_preview_join_button {
+#game_preview_score_label {
     position: absolute;
     top: 25px;
     right: 5px;
@@ -589,9 +589,25 @@ div.game_lobby_container_full {
     height: 30px;
 }
 
+#game_preview_score {
+    position: absolute;
+    top: 45px;
+    right: 5px;
+    width: 170px;
+    height: 30px;
+}
+
+#game_preview_join_button {
+    position: absolute;
+    top: 125px;
+    right: 5px;
+    width: 170px;
+    height: 30px;
+}
+
 #game_preview_observe_button {
     position: absolute;
-    top: 60px;
+    top: 160px;
     right: 5px;
     width: 170px;
     height: 30px;

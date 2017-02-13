@@ -527,6 +527,14 @@ function ClearGamePreviewPlayerList() {
     player_list.innerHTML = html;
 }
 
+function UpdatePreviewScore() {
+    var label = document.getElementById("game_preview_score_label");
+    var elem = document.getElementById("game_preview_score");
+
+    label.style.display = game_preview_data.m_Started ? "block" : "none";
+    elem.innerHTML = game_preview_data.m_Score;
+}
+
 function GamePreviewJoin() {
     JoinGame(chat_data.preview_server_id, chat_data.preview_game_id, null, false);
     CloseGamePreview();

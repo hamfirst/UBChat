@@ -15,12 +15,20 @@ function ProcessText(text, allow_newline) {
            text.substr(index, 7) == "http://" ||
            text.substr(index, 8) == "https://") {
 
-               var link_end = text.indexOf(" ", index);
-               var link = (link_end == -1 ? text.substr(index) : text.substr(index, link_end - index));
+            var space_end = text.indexOf(" ", index);
+            var newline_end = text.indexOf("\n", index);
 
-               result_text += '<a href="'+link+'" target="_blank">' + htmlify(link) + '</a>';
-               index += link.length;
-               has_content = true;
+            var link_end = newline_end != -1 ? newline_end : space_end;
+            var link = (link_end == -1 ? text.substr(index) : text.substr(index, link_end - index));
+
+            if(text.substr(index, 4) == "www.") {
+                result_text += '<a href="http://'+link+'" target="_blank">' + htmlify(link) + '</a>';
+            } else {
+                result_text += '<a href="'+link+'" target="_blank">' + htmlify(link) + '</a>';
+            }
+
+            index += link.length - 1;
+            has_content = true;
 
         } else if(text[index] == '&') {
             var next = (index + 1 < text_len ? text[index + 1] : '');

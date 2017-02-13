@@ -89,6 +89,7 @@ function GotSettings(settings_data, resolution_data, patch_data) {
     }
 
     document.getElementById("hold_score").checked = current_settings.HoldScoreButton;
+    document.getElementById("save_replay").checked = !(current_settings.DisableReplaySave || false);
 
     var spin_rate = document.getElementById("spin_rate");
     spin_rate.min = 0;
@@ -213,6 +214,8 @@ document.onkeydown = function(e) {
 
         capture_keypress_id = -1;
         CloseCaptureKeypressPopup();
+        
+        e.preventDefault();
     }
 }
 
@@ -256,7 +259,7 @@ function HandleExtMouseButtonPress(button_id) {
 
         capture_keypress_id = -1;
         CloseCaptureKeypressPopup();
-        
+
         e.preventDefault();
     }
 }
@@ -357,5 +360,11 @@ function HoldScoreChanged() {
 function SpinRateChanged() {
     if(settings_initialized == false) return;
     current_settings.SpinRate = Number(document.getElementById("spin_rate").value);
+    SaveSettings();
+}
+
+function SaveReplayChanged() {
+    if(settings_initialized == false) return;
+    current_settings.DisableReplaySave = !document.getElementById("save_replay").checked;
     SaveSettings();
 }

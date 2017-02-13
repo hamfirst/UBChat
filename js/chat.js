@@ -71,6 +71,8 @@ var mode_chat_html =`
     <div id="game_preview" style="display:none">
         <div id="game_preview_player_list" class="blue_interior">
         </div>
+        <div id="game_preview_score_label", class="weak_header">Score:</div>
+        <div id="game_preview_score"></div>
         <button id="game_preview_join_button" class="style3" onclick="GamePreviewJoin();">Join</button>
         <button id="game_preview_observe_button" class="style3" onclick="GamePreviewObserve();">Observe</button>
     </div>
@@ -243,6 +245,9 @@ function InitializeChatCallbacks() {
     CreateChangeCallback(chat_callback_list, local_data, ".m_Title", function(icon) { SyncTitle(); });
     CreateChangeCallback(chat_callback_list, local_data, ".m_IconURL", function(icon) { SyncIcon(); });
     CreateChangeCallback(chat_callback_list, local_data, ".m_PrimarySquad", function(icon) { SyncPrimarySquad(); });
+
+    CreateChangeCallback(game_preview_callback_list, game_preview_data, ".m_Started", function(score) { UpdatePreviewScore(); });
+    CreateChangeCallback(game_preview_callback_list, game_preview_data, ".m_Score", function(score) { UpdatePreviewScore(); });
 
     disable_profile_sync = true;
 

@@ -126,6 +126,7 @@ var popup_html = `
                 <hr class="header_separator" />
                 <input id="lock_mouse" onchange="LockMouseChanged();" type="checkbox" class="settings_checkbox">Lock Mouse To Window</input><br />
                 <input id="hold_score" onchange="HoldScoreChanged();" type="checkbox" class="settings_checkbox">Hold Score Button<br />
+                <input id="save_replay" onchange="SaveReplayChanged();" type="checkbox" class="settings_checkbox">Save Replays<br />
                 <input id="use_only_talk" onchange="UseOnlyTalkKeyChanged();" type="checkbox" class="settings_checkbox">Press Any Key To Talk<br />
 
 
