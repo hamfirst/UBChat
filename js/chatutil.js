@@ -17,6 +17,11 @@ function ProcessText(text, allow_newline) {
 
             var space_end = text.indexOf(" ", index);
             var newline_end = text.indexOf("\n", index);
+               var displayLink = htmlify(link);
+               
+               if(link.substr(0, 4) === "www.") {
+                   link = "http://" + link;
+               }
 
             var link_end = newline_end != -1 ? newline_end : space_end;
             var link = (link_end == -1 ? text.substr(index) : text.substr(index, link_end - index));
