@@ -17,9 +17,14 @@ function ProcessText(text, allow_newline) {
 
                var link_end = text.indexOf(" ", index);
                var link = (link_end == -1 ? text.substr(index) : text.substr(index, link_end - index));
+               var displayLink = htmlify(link);
+               
+               if(link.substr(0, 4) === "www.") {
+                   link = "http://" + link;
+               }
 
-               result_text += '<a href="'+link+'" target="_blank">' + htmlify(link) + '</a>';
-               index += link.length;
+               result_text += '<a href="' + link + '" target="_blank">' + displayLink + '</a>';
+               index += displayLink.length - 1;
                has_content = true;
 
         } else if(text[index] == '&') {
