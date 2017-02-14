@@ -492,23 +492,23 @@ div.game_lobby_container_full {
 #game_lobby_player_list {
     margin: 2px;
     width: calc(170px);
-    height: calc(100% - 190px);
+    height: calc(100% - 203px);
     float: left;
 }
 
 #game_lobby_map_info {
     position: absolute;
-    top: calc(100% - 92px);
+    top: calc(100% - 105px);
     margin: 0;
     width: calc(165px);
-    height: calc(80px);
+    height: calc(93px);
     float: left;
     font-family: Arial, sans-serif;
     font-size: 8pt;
-    white-space: nowrap;
     text-align: left;
     color: lightblue;
     padding-top: 2px;
+    word-wrap: break-word;
 }
 
 #game_lobby_chat_area_bkg {
@@ -546,7 +546,7 @@ div.game_lobby_container_full {
 
 #game_lobby_start_button {
     position: absolute;
-    top: calc(100% - 170px);
+    top: calc(100% - 183px);
     left: 5px;
     width: 170px;
     height: 30px;
@@ -554,7 +554,7 @@ div.game_lobby_container_full {
 
 #game_lobby_leave_button {
     position: absolute;
-    top: calc(100% - 135px);
+    top: calc(100% - 148px);
     left: 5px;
     width: 85px;
     height: 30px;
@@ -562,7 +562,7 @@ div.game_lobby_container_full {
 
 #game_lobby_switch_button {
     position: absolute;
-    top: calc(100% - 135px);
+    top: calc(100% - 148px);
     left: 91px;
     width: 84px;
     height: 30px;
