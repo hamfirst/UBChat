@@ -20,7 +20,7 @@ var mode_chat_html =`
     </div>
 </div>
 <div id="player_list_container" class="general_box">
-    <div id="player_list_header" class="weak_header">Players In Channel</div>
+    <div id="player_list_header" class="weak_header">Players In Channel (<span id="player_list_count">0</span>)</div>
     <div id="player_list" class="blue_interior">
     </div>
 </div>
@@ -512,6 +512,14 @@ function SetupChatView() {
 
     dom_data.chatinput.addEventListener("keydown", HandleChatKeyDown);
     dom_data.gamelobbychatinput.addEventListener("keydown", HandleGameLobbyChatKeyDown);
+    
+    var playerListDOM = dom_data.playerlist;
+    var playerListObserver = new MutationObserver(function(events) {
+        document.getElementById("player_list_count").innerHTML = dom_data.playerlist.childNodes.length;
+    });
+    
+    var observeConfig = { childList: true };
+    playerListObserver.observe(playerListDOM, observeConfig);
 
     if(window.hasOwnProperty('ubfrontend') == false) {
         document.getElementById("server_list_create_game").style.display = "none";
