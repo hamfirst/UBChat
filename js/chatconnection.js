@@ -19,7 +19,7 @@ var connection_data = {
     mode: '',
     remote_host : default_remote_host,
     remote_port : default_remote_port,
-    version: 1034,
+    version: 1035,
     is_relocating: false,
     relocation_token: null,
     relocation_messages: [],
