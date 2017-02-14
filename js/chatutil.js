@@ -17,15 +17,20 @@ function ProcessText(text, allow_newline) {
 
             var space_end = text.indexOf(" ", index);
             var newline_end = text.indexOf("\n", index);
+            var quote_end = text.indexOf("\"", index);
 
-            var link_end = newline_end != -1 ? newline_end : space_end;
-            var link = (link_end == -1 ? text.substr(index) : text.substr(index, link_end - index));
+            if(space_end == -1) space_end = 10000000;
+            if(newline_end == -1) newline_end = 10000000;
+            if(quote_end == -1) quote_end = 10000000;
+
+            var link_end = Math.min(space_end, newline_end, quote_end);
+            var link = (link_end == 10000000 ? text.substr(index) : text.substr(index, link_end - index));
 
             if(text.substr(index, 4) == "www.") {
-                link = "http://" + link;
+                result_text += '<a href="http://'+link+'" target="_blank">' + htmlify(link) + '</a>';
+            } else {
+                result_text += '<a href="'+link+'" target="_blank">' + htmlify(link) + '</a>';
             }
-
-            result_text += '<a href="'+link+'" target="_blank">' + htmlify(link) + '</a>';
 
             index += link.length - 1;
             has_content = true;
