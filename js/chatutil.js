@@ -569,12 +569,12 @@ function HandleGameLobbyChatKeyDown(event) {
 
 function HandleShortcutKeyDown(event) {
     var keycode = event.keyCode;
-    var mod_alt_pressed = false;
+    var mod_ctrl_pressed = false;
 
-    if(event.altKey) mod_alt_pressed = true;
+    if(event.ctrlKey) mod_ctrl_pressed = true;
 
 
-    if(mod_alt_pressed && keycode == 37) { //alt + left arrow
+    if(mod_ctrl_pressed && keycode == 37) { // ctrl + left arrow
         for(var index = 0; index < chat_data.all_channels.length; index++) {
             if(chat_data.all_channels[index].channel_id == chat_data.current_channel) {
                 if(chat_data.all_channels.length > 1) {
@@ -587,7 +587,7 @@ function HandleShortcutKeyDown(event) {
                 break;
             }
         }
-    } else if(mod_alt_pressed && keycode == 39) { //alt + right arrow
+    } else if(mod_ctrl_pressed && keycode == 39) { //ctrl + right arrow
          for(var index = 0; index < chat_data.all_channels.length; index++) {
             if(chat_data.all_channels[index].channel_id == chat_data.current_channel) {
                 if(chat_data.all_channels.length > 1) {
