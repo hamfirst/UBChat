@@ -512,6 +512,7 @@ function SetupChatView() {
 
     dom_data.chatinput.addEventListener("keydown", HandleChatKeyDown);
     dom_data.gamelobbychatinput.addEventListener("keydown", HandleGameLobbyChatKeyDown);
+    document.addEventListener("keydown", HandleShortcutKeyDown);
     
     var playerListDOM = dom_data.playerlist;
     var playerListObserver = new MutationObserver(function(events) {
