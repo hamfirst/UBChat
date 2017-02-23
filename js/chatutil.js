@@ -567,6 +567,42 @@ function HandleGameLobbyChatKeyDown(event) {
     }
 }
 
+function HandleShortcutKeyDown(event) {
+    var keycode = event.keyCode;
+    var mod_ctrl_pressed = false;
+
+    if(event.ctrlKey) mod_ctrl_pressed = true;
+
+
+    if(mod_ctrl_pressed && keycode == 37) { // ctrl + left arrow
+        for(var index = 0; index < chat_data.all_channels.length; index++) {
+            if(chat_data.all_channels[index].channel_id == chat_data.current_channel) {
+                if(chat_data.all_channels.length > 1) {
+                    if(index == 0)  { 
+                        SetCurrentChannel(chat_data.all_channels[chat_data.all_channels.length - 1].channel_id);
+                    } else {
+                        SetCurrentChannel(chat_data.all_channels[index - 1].channel_id);
+                    }   
+                }
+                break;
+            }
+        }
+    } else if(mod_ctrl_pressed && keycode == 39) { //ctrl + right arrow
+         for(var index = 0; index < chat_data.all_channels.length; index++) {
+            if(chat_data.all_channels[index].channel_id == chat_data.current_channel) {
+                if(chat_data.all_channels.length > 1) {
+                        if(index == chat_data.all_channels.length - 1)  {
+                            SetCurrentChannel(chat_data.all_channels[0].channel_id);
+                        } else {
+                            SetCurrentChannel(chat_data.all_channels[index + 1].channel_id);
+                        }   
+                    }
+                    break;
+                }
+            }   
+    } 
+}
+
 function HandleChannelButtonClick(channel_id) {
     SetCurrentChannel(channel_id);
 }
