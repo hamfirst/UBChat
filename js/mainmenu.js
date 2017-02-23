@@ -3,8 +3,8 @@ var mainmenu_html = `
 <img id="watermark" src="img/ublogo_huge.png" />
 <div id="main_menu">
     <button class="style2" onclick="GoOnline();">Play Online</button>
-    <button class="style2" onclick="PlayOffline();" style="width:calc(50% - 3px); float:left;">Play Offline</button>
-    <button class="style2" onclick="PlayReplay();" style="width:calc(50% - 3px); margin-left:6px;">Play Demo</button>
+    <button class="style2" onclick="PlayOffline();" style="width:calc(50% - 3px); float:left;">Offline Map Test</button>
+    <button class="style2" onclick="PlayReplay();" style="width:calc(50% - 3px); margin-left:6px;">Play Replay</button>
     <hr>
     <button class="style2" onclick="OpenSettings();">Settings</button>
     <button class="style2" onclick="QuitLobby();">Quit</button>

@@ -444,7 +444,7 @@ function OpenControlPopup() {
         options.push(["Settings", "OpenSettings(0);"]);
         options.push(null);
         options.push(["Play Offline", "PlayOffline();"]);
-        options.push(["Play Demo", "PlayReplay();"]);
+        options.push(["Play Replay", "PlayReplay();"]);
         options.push(null);
     }
 

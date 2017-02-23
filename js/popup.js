@@ -2,7 +2,7 @@
 var popup_html = `
 <div id="demo_list_popup_bkg" class="popup_bkg">
     <div id="demo_list_popup" class="blue_box">
-        <div id="demo_list_header" class="strong_header">Demo List</div>
+        <div id="demo_list_header" class="strong_header">Replay List</div>
         <div class="popup_close"><a onclick="ShowPopup(-1);">x</a></div>
         <hr class="header_separator" />
         <div class="weak_header" style="display: inline; margin-left:10px;">File Name</div>

@@ -7,8 +7,13 @@ var ConnectionState = {
     Relocating: 4
 };
 
-var default_remote_host = 'uniballhq.com';
-var default_remote_port = 7999;
+var load_balancers = [
+    ['uniballhq.com', 9050]
+];
+
+var servers = [
+    ['uniballhq.com', 7999]
+];
 
 var connection_data = {
     socket: null,
@@ -17,15 +22,17 @@ var connection_data = {
     got_initial_data: false,
     ticket: '',
     mode: '',
-    remote_host : default_remote_host,
-    remote_port : default_remote_port,
+    remote_host : null,
+    remote_port : null,
     version: 1035,
     is_relocating: false,
     relocation_token: null,
     relocation_messages: [],
     requested_create_server: null,
     server_info: null,
-    welcome_info: null
+    welcome_info: null,
+    bypass_load_balancer: true,
+    got_load_balancer_result: false
 };
 
 var proof_of_work = new Worker("js/proofofwork.js");
@@ -48,6 +55,24 @@ function SendSocketMessage(msg_obj) {
     }
 }
 
+function HandleLoadBalancerData(msg) {
+    var msg_data = JSON.parse(msg.data);
+
+    connection_data.remote_host = msg_data['host'];
+    connection_data.remote_port = msg_data['port'];
+    connection_data.got_load_balancer_result = true;
+
+    console.log("Got load balancer result - " + connection_data.remote_host + ":" + connection_data.remote_port);
+}
+
+function HandleLoadBalancerClosed(err) {
+    if(connection_data.got_load_balancer_result) {
+        FinalizeConnect();
+    } else {
+        SetupConnectErrorView("No servers available");
+    }
+}
+
 function HandleSocketConnected() {
     console.log("Got server connection");
     connection_data.state = ConnectionState.Identifying;
@@ -67,15 +92,6 @@ function HandleSocketError(err) {
 
     if(connection_data.state == ConnectionState.Connecting ||
        connection_data.state == ConnectionState.Identifying) {
-        if(connection_data.remote_host != default_remote_host ||
-           connection_data.remote_port != default_remote_port) {
-            connection_data.remote_host = default_remote_host;
-            connection_data.remote_port = default_remote_port;
-            
-            RequestConnect(connection_data.ticket, connection_data.mode);
-            return;
-        }
-
         SetupConnectErrorView("Could not connect to server.");
     }
 
@@ -378,7 +394,29 @@ function RequestConnect(ticket, mode) {
         connection_data.is_relocating = false,
         connection_data.relocation_token = null,
         connection_data.relocation_messages = []
+        connection_data.got_load_balancer_result = false;
+
+        if(connection_data.bypass_load_balancer) {
+            var server = servers[Math.floor(Math.random() * servers.length)];
+
+            connection_data.remote_host = server[0];
+            connection_data.remote_port = server[1];
+            connection_data.got_load_balancer_result = true;
+            FinalizeConnect();
+        } else {
+
+            var lb = load_balancers[Math.floor(Math.random() * load_balancers.length)];
+
+            connection_data.socket = new WebSocket('ws://' + lb[0] + ':' + lb[1]);
+            connection_data.socket.onmessage = HandleLoadBalancerData;
+            connection_data.socket.onclose = HandleLoadBalancerClosed;
+        }
+    } else {
+        FinalizeConnect();
     }
+}
+
+function FinalizeConnect() {
 
     if(connection_data.state == ConnectionState.Disconnected || connection_data.state == ConnectionState.Relocating) {
         console.log("Requesting connect to server");
