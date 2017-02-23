@@ -117,7 +117,7 @@ function CreateListChangeCallback(callback_list, obj, change_path, oninsert_cb, 
     var val = GetValueAtPath(path, obj);
     if(IsList(val)) {
       for(var e in val) {
-        oninsert_cb(e, val[e]);
+        oninsert_cb(e, val[e], true);
       }      
     }
   }

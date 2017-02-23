@@ -118,8 +118,13 @@ function InitializeChatCallbacks() {
             });
             
             CreateListChangeCallback(chat_callback_list, local_data, ".m_Channels[" + idx + "].m_Users", 
-                function(idx, val) {
+                function(idx, val, addingList) {
                     console.log("New user " + val.m_Name);
+                    
+                    if(!addingList) {
+                        AddChat({'c': 'stxt', 'msg': val.m_Name + ' has joined the channel.', 'channel_id': channel_id});
+                    }
+                    
                     AddChatPlayer(channel_id, val);
                 },
                 function(idx, val) {
@@ -128,6 +133,9 @@ function InitializeChatCallbacks() {
                 },
                 function(idx) {
                     console.log("User removed " + idx + " channel " + channel_index);
+                    
+                    var user = local_data.m_Channels[channel_index].m_Users[idx];
+                    AddChat({'c': 'stxt', 'msg': user.m_Name + ' has left the channel.', 'channel_id': channel_id});
                     RemoveChatPlayer(channel_id, local_data.m_Channels[channel_index].m_Users[idx].m_UserKey);
                 },
                 function() {
