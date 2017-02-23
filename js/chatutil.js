@@ -343,6 +343,9 @@ function AddChatToHTML(html_data) {
     }
 
     dom_data.chatarea.innerHTML += html_data;
+    if(dom_data.chatarea.childElementCount > 1000) {
+        dom_data.chatarea.removeChild(dom_data.chatarea.firstElementChild);
+    }
 
     if(scroll_to_bot && dom_data.chatarea.scrollHeight >= dom_data.chatarea.clientHeight) {
         dom_data.chatarea.scrollTop = dom_data.chatarea.scrollHeight - dom_data.chatarea.clientHeight;
@@ -351,7 +354,9 @@ function AddChatToHTML(html_data) {
 
 function AddChatListToHTML(chat_msg_list) {
     var chat_html = "";
-    for(var index = 0; index < chat_msg_list.length; index++) {
+    var start = Math.max(0, chat_msg_list.length - 1000);
+
+    for(var index = start; index < chat_msg_list.length; index++) {
         chat_html += chat_msg_list[index];
     }
 

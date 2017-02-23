@@ -440,10 +440,13 @@ function RenderUserManagement() {
 
 function GetActiveSyncedSquadRank() {  
     var currentSyncedSquad = local_data.m_Squads[active_synced_squad];
+
+    var squad_keys = Object.keys(currentSyncedSquad.m_Users);
     
-    for(var x = 0; x < Object.keys(currentSyncedSquad.m_Users).length; x++) {
-        if(currentSyncedSquad.m_Users[x].m_UserKey === local_data.m_UserKey) {
-            return GetRankName(currentSyncedSquad.m_Users[x].m_MembershipFlags);
+    for(var x = 0; x < squad_keys.length; x++) {
+        var user_index = squad_keys[x];
+        if(currentSyncedSquad.m_Users[user_index].m_UserKey === local_data.m_UserKey) {
+            return GetRankName(currentSyncedSquad.m_Users[user_index].m_MembershipFlags);
         }
     }
 }

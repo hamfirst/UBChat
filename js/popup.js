@@ -204,9 +204,7 @@ var popup_html = `
             </div>
             
             <div id="auto_joins_container">
-            
                 <div class="weak_header" style="text-align:center;">Manage Auto Joins<br />
-
                     <div class="base_text" style="text-align:center;font-size:8pt;padding-bottom:10px;float:none;margin:auto;">
                         Auto joins are channels that you will automatically join as soon as you login to the chat lobby.
                     </div>    
@@ -305,6 +303,7 @@ var popup_elements = [];
 var edit_text_msg = {};
 var disable_profile_sync = false;
 
+var auto_join_list = null;
 
 function AttachPopupHTML() {
     var popup_container = document.getElementById('popup_container');
@@ -327,6 +326,9 @@ function AttachPopupHTML() {
       document.getElementById("status_popup_bkg"),
       document.getElementById("text_edit_popup_bkg")
     ];
+
+    auto_join_list = CreateList("auto_joins_list", "auto_joins_list_", 
+        GetAutoJoinHtml, "generic_list_element", "generic_list_element_selected");
 }
 
 function ShowPopup(popup_id) {
@@ -503,11 +505,32 @@ function IconChanged() {
 }
 
 function AddAutoJoin() {
-    //TODO: NEED NEW MSG TOKEN
+    var channel = document.getElementById('auto_join_input').value;
+    if(channel == "") {
+        return;
+    }
+
+    var msg = {
+        'c': 'add_auto_join',
+        'channel': channel
+    };
+    
+    SendSocketMessage(msg);
+    document.getElementById('auto_join_input').value = "";
 }
 
 function RemoveAutoJoin() {
-    //TODO: NEED NEW MSG TOKEN
+    var channel = auto_join_list.GetSelection();
+    if(channel == null) {
+        return;
+    }
+
+    var msg = {
+        'c': 'rem_auto_join',
+        'channel': channel[1]
+    };
+    
+    SendSocketMessage(msg);
 }
 
 function PrimarySquadChanged() {
@@ -807,4 +830,8 @@ function ShowRuntimeError(error_msg) {
 
 function CloseRuntimeError() {
     var popup = document.getElementById("runtime_error_popup_bkg").style.display = "none";
+}
+
+function GetAutoJoinHtml(elem, elem_id, idx, item_data) {
+    return htmlify(item_data);
 }

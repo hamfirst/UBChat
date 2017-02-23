@@ -249,6 +249,8 @@ function InitializeChatCallbacks() {
     CreateChangeCallback(game_preview_callback_list, game_preview_data, ".m_Started", function(score) { UpdatePreviewScore(); });
     CreateChangeCallback(game_preview_callback_list, game_preview_data, ".m_Score", function(score) { UpdatePreviewScore(); });
 
+    CreateListBinding(auto_join_list, ".m_AutoJoinChannels", chat_callback_list, local_data);
+
     disable_profile_sync = true;
 
     CreateListChangeCallback(chat_callback_list, local_data, ".m_TitleList",   
@@ -446,6 +448,8 @@ function OpenControlPopup() {
         options.push(["Play Offline", "PlayOffline();"]);
         options.push(["Play Replay", "PlayReplay();"]);
         options.push(null);
+        options.push(["Online Support", "JoinSupport();"]);
+        options.push(null);
     }
 
     options.push(["Sign Out", "SignOut();"]);
@@ -491,6 +495,10 @@ function TogglePlayerList() {
     } else {
         player_list.classList.add("player_list_open");
     }
+}
+
+function JoinSupport() {
+    SendChat("/join Support");
 }
 
 function SetupChatView() {
