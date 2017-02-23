@@ -724,6 +724,25 @@ div.game_lobby_container_full {
     height: 32px;
 }
 
+#auto_joins_container {
+    display: none;
+}
+
+#profile_auto_joins {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#auto_join_column {
+   flex: 1;
+}
+
+#auto_joins_list {
+    height: 200px;
+    width: 250px;
+}
+
 #control_override_popup_bkg {
     z-index: 14;
 }

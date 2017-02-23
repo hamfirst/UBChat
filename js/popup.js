@@ -161,6 +161,7 @@ var popup_html = `
             <ul class="popup_list">
                 <li class="popup_list_elem" onclick="ShowProfileCategory(0);">Chat</li>
                 <li class="popup_list_elem" onclick="ShowProfileCategory(1);">Stats</li>
+                <li class="popup_list_elem" onclick="ShowProfileCategory(2);">Auto Joins</li>
             </ul>
         </div>
 
@@ -201,6 +202,30 @@ var popup_html = `
                     </div>
                 </div>
             </div>
+            
+            <div id="auto_joins_container">
+            
+                <div class="weak_header" style="text-align:center;">Manage Auto Joins<br />
+
+                    <div class="base_text" style="text-align:center;font-size:8pt;padding-bottom:10px;float:none;margin:auto;">
+                        Auto joins are channels that you will automatically join as soon as you login to the chat lobby.
+                    </div>    
+                </div>
+                
+                <div style="display:flex; justify-content:center;width:100%;margin-top:30px;">
+                    <div>
+                        <div class="weak_header">Channels</div>
+                        <div id="auto_joins_list" class="blue_interior">
+                        </div>
+                    </div>    
+                    <div style="margin-left:15px;">                        
+                        <button class="style3" style="width:75%;margin-top:25px;padding-left:30px;padding-right:30px;" onclick="RemoveAutoJoin();">Remove Channel</button>
+                        <button class="style3" style="width:75%;margin-top:70px;padding-left:30px;padding-right:30px;" onclick="AddAutoJoin();">Add Channel</button>
+                        <input type="text" id="auto_join_input" style="margin-top:10px; width:73%;" />
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>
@@ -329,13 +354,20 @@ function ShowOptionsCategory(option_id) {
 }
 
 function ShowProfileCategory(option_id) {
-    if(option_id == 0) {
+    if(option_id === 0) {
         document.getElementById("chat_options").style.display = "block";
         document.getElementById("profile_stats_options").style.display = "none";
+        document.getElementById("auto_joins_container").style.display = "none";
     }
-    else if(option_id == 1) {
+    else if(option_id === 1) {
         document.getElementById("chat_options").style.display = "none";
         document.getElementById("profile_stats_options").style.display = "block";
+        document.getElementById("auto_joins_container").style.display = "none";
+    }
+    else if(option_id === 2) {
+        document.getElementById("chat_options").style.display = "none";
+        document.getElementById("profile_stats_options").style.display = "none";
+        document.getElementById("auto_joins_container").style.display = "block";
     }
 }
 
@@ -468,6 +500,14 @@ function IconChanged() {
     };
     
     SendSocketMessage(msg);
+}
+
+function AddAutoJoin() {
+    //TODO: NEED NEW MSG TOKEN
+}
+
+function RemoveAutoJoin() {
+    //TODO: NEED NEW MSG TOKEN
 }
 
 function PrimarySquadChanged() {
