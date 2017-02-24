@@ -512,3 +512,14 @@ function RequestLeaveGame() {
     };
     SendSocketMessage(msg_data);
 }
+
+function RequestPersistenChange(name, value) {
+
+    var change = "kSet ." + name + " " + value;
+
+    var msg_data = {
+        'c': 'change_persistent',
+        'change': change
+    }
+    SendSocketMessage(msg_data);
+}

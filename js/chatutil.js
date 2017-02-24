@@ -169,8 +169,14 @@ function GenerateChatHTML(chat_msg) {
         var msg_time = new Date();
         msg_time.setTime(epoch_secs * 1000);
 
-        var hours = msg_time.getHours().toString();
+        var hours_val = msg_time.getHours();
+        if(local_data.m_Persistent.m_TwelveHourClock) {
+            hours_val = hours_val % 12;
+        }
+
+        var hours = hours_val.toString();
         var minutes = msg_time.getMinutes().toString();
+
 
         if(hours.length < 2) {
             hours = "0" + hours;

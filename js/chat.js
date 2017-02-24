@@ -118,10 +118,10 @@ function InitializeChatCallbacks() {
             });
             
             CreateListChangeCallback(chat_callback_list, local_data, ".m_Channels[" + idx + "].m_Users", 
-                function(idx, val, addingList) {
+                function(idx, val, adding_list) {
                     console.log("New user " + val.m_Name);
                     
-                    if(!addingList) {
+                    if(!adding_list && local_data.m_Persistent.m_EnterExitMessages) {
                         AddChat({'c': 'stxt', 'msg': val.m_Name + ' has joined the channel.', 'channel_id': channel_id});
                     }
                     
@@ -170,7 +170,8 @@ function InitializeChatCallbacks() {
         function(idx) {
             console.log("Channel removed " + idx);
             RemoveChangeCallback(chat_callback_list, ".m_Channels[" + idx + "].m_Motd");     
-            RemoveChangeCallback(chat_callback_list, ".m_Channels[" + idx + "].m_Users");     
+            RemoveChangeCallback(chat_callback_list, ".m_Channels[" + idx + "].m_Users");    
+            RemoveChangeCallback(chat_callback_list, ".m_Channels[" + idx + "].m_Bots");   
             
             if(idx in local_data.m_Channels) {
                 RemoveChatChannel(local_data.m_Channels[idx].m_ChannelKey);

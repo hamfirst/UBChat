@@ -183,6 +183,10 @@ var popup_html = `
                 <select id="profile_primary_squad" onchange="PrimarySquadChanged();" class="settings_dropdown">
                 </select>
                 <div class="base_text">Current Primary Squad: <span id="profile_current_primary_squad">None</span></div>
+                <br />&nbsp;
+                <br />&nbsp;
+                <input id="profile_enter_exit_messages" type="checkbox" class="settings_checkbox" onchange="EnterExitMessagesChanged()">Enter/Exit Messages</input><br />&nbsp;
+                <input id="profile_twelve_hour_clock" type="checkbox" class="settings_checkbox" onchange="TwelveHourClockChanged()">Twelve Hour Clock</input>
             </div>
 
             <div id="profile_stats_options">
@@ -479,9 +483,13 @@ function SyncPrimarySquad() {
 function FinalizeProfile() {
     disable_profile_sync = false;
 
+    document.getElementById("profile_enter_exit_messages").checked = local_data.m_Persistent.m_EnterExitMessages;
+    document.getElementById("profile_twelve_hour_clock").checked = local_data.m_Persistent.m_TwelveHourClock;
+
     SyncProfileOptions();
     SyncProfileSquads();
     SyncProfileSelectedOptions();
+    
 }
 
 function TitleChanged() {
@@ -541,6 +549,14 @@ function PrimarySquadChanged() {
     };
     
     SendSocketMessage(msg);
+}
+
+function EnterExitMessagesChanged() {
+    RequestPersistenChange('m_EnterExitMessages', document.getElementById("profile_enter_exit_messages").value ? "true" : "false");
+}
+
+function TwelveHourClockChanged() {
+    RequestPersistenChange('m_TwelveHourClock', document.getElementById("profile_twelve_hour_clock").value ? "true" : "false");
 }
 
 function OpenStats(user_id) {
