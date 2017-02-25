@@ -24,7 +24,7 @@ var connection_data = {
     mode: '',
     remote_host : null,
     remote_port : null,
-    version: 1035,
+    version: 1036,
     is_relocating: false,
     relocation_token: null,
     relocation_messages: [],
