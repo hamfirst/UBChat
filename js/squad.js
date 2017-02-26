@@ -426,7 +426,7 @@ function SyncSquadManage(squad_id) {
 }
 
 function RenderUserManagement() {
-    active_synced_squad_rank = GetActiveSyncedSquadRank();
+    active_synced_squad_rank = GetUserSquadRank(active_synced_squad);
 
     var canManageUsers = (active_synced_squad_rank === "Manager" || active_synced_squad_rank === "Owner")
     
@@ -438,15 +438,14 @@ function RenderUserManagement() {
     }
 }
 
-function GetActiveSyncedSquadRank() {  
-    var currentSyncedSquad = local_data.m_Squads[active_synced_squad];
-
-    var squad_keys = Object.keys(currentSyncedSquad.m_Users);
+function GetUserSquadRank(squad_id) {  
+    var squad = local_data.m_Squads[squad_id];
+    var squad_keys = Object.keys(squad.m_Users);
     
     for(var x = 0; x < squad_keys.length; x++) {
         var user_index = squad_keys[x];
-        if(currentSyncedSquad.m_Users[user_index].m_UserKey === local_data.m_UserKey) {
-            return GetRankName(currentSyncedSquad.m_Users[user_index].m_MembershipFlags);
+        if(squad.m_Users[user_index].m_UserKey === local_data.m_UserKey) {
+            return GetRankName(squad.m_Users[user_index].m_MembershipFlags);
         }
     }
 }

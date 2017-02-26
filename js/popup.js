@@ -427,8 +427,11 @@ function SyncProfileSquads() {
     var squad_list_selection = squad_list.value;
 
     var squad_options = '<option value="0">None</option>';
+    
     for(var index in local_data.m_Squads) {
-        squad_options += '<option value="'+index+'">'+local_data.m_Squads[index].m_Name+'</option>';
+        if(GetUserSquadRank(index) !== "Honorary Member") {
+            squad_options += '<option value="'+index+'">'+local_data.m_Squads[index].m_Name+'</option>';
+        }
     }    
     
     squad_list.innerHTML = squad_options;
