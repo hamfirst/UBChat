@@ -135,10 +135,7 @@ function InitializeChatCallbacks() {
                     console.log("User removed " + idx + " channel " + channel_index);
                     
                     var user = local_data.m_Channels[channel_index].m_Users[idx];
-
-                    if(local_data.m_Persistent.m_EnterExitMessages) {
-                        AddChat({'c': 'stxt', 'msg': user.m_Name + ' has left the channel.', 'channel_id': channel_id});
-                    }
+                    AddChat({'c': 'stxt', 'msg': user.m_Name + ' has left the channel.', 'channel_id': channel_id});
                     RemoveChatPlayer(channel_id, local_data.m_Channels[channel_index].m_Users[idx].m_UserKey);
                 },
                 function() {
