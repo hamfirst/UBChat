@@ -503,6 +503,7 @@ function GenerateChatPlayerElement(channel_id, user_info) {
     elem.className = "player_list_element";
     elem.attributes.userid = user_info.user_id;
     elem.attributes.username = user_info.user_name;
+    elem.attributes.squad = user_info.squad;
     elem.style.fontSize = "9pt";
     elem.onclick = function() { ClickPlayer(user_info.user_id, user_info.plat_id, channel_id); };
     elem.oncontextmenu = function() { ClickPlayer(user_info.user_id, user_info.plat_id, channel_id); };
@@ -515,7 +516,7 @@ function AddChatPlayerHTML(channel_id, user_info) {
     var elem = GenerateChatPlayerElement(channel_id, user_info);
 
     for(var child = dom_data.playerlist.firstElementChild; child != null; child = child.nextElementSibling) {
-        if(child.attributes.username.localeCompare(user_info.user_name) > 0) {
+        if(PlayerSortCompare(child, user_info) > 0) {
             dom_data.playerlist.insertBefore(elem, child);
             return;
         }
@@ -524,14 +525,15 @@ function AddChatPlayerHTML(channel_id, user_info) {
     dom_data.playerlist.appendChild(elem);
 }
 
-
 function AddChatPlayerListHTML(channel_id, user_info_list) {
     var users = [];
     for(var index = 0; index < user_info_list.length; index++) {
         users.push(GenerateChatPlayerElement(channel_id, user_info_list[index]));
     }
 
-    users.sort(function(a, b) { return a.attributes.username.toLowerCase().localeCompare(b.attributes.username.toLowerCase()); });
+    users.sort(function(a, b) {
+        return PlayerSortCompare(a, b);
+    });
 
     dom_data.playerlist.innerHTML = "";
 
@@ -679,4 +681,24 @@ function GetTeamColor(team) {
     }    
 
     return "#818181";
+}
+
+function PlayerSortCompare(a, b) {
+    
+    a.username = a.attributes ? a.attributes.username : a.user_name;
+    b.username = b.attributes ? b.attributes.username : b.user_name;
+    
+    a.squad = a.attributes ? a.attributes.squad : a.squad;
+    b.squad = b.attributes ? b.attributes.squad : b.squad;
+
+    if(local_data.m_Persistent.m_PlayerSortList === 0) {
+        return a.username.localeCompare(b.username, { sensitivity: 'case' }); 
+    }
+    
+    if(a.squad === "" && b.squad === "") {
+        return a.username.localeCompare(b.username, { sensitivity: 'case' });
+    }
+    else {
+        return a.squad.localeCompare(b.squad, { sensitivity: 'case' }); 
+    }
 }
