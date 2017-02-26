@@ -185,8 +185,8 @@ var popup_html = `
                 <div class="base_text">Current Primary Squad: <span id="profile_current_primary_squad">None</span></div>
                 <br />&nbsp;
                 <br />&nbsp;
-                <input id="profile_enter_exit_messages" type="checkbox" class="settings_checkbox" onchange="EnterExitMessagesChanged()">Enter/Exit Messages</input><br />&nbsp;
-                <input id="profile_twelve_hour_clock" type="checkbox" class="settings_checkbox" onchange="TwelveHourClockChanged()">Twelve Hour Clock</input>
+                <input id="profile_enter_exit_messages" type="checkbox" class="settings_checkbox" onchange="EnterExitMessagesChanged();">Enter/Exit Messages</input><br />&nbsp;
+                <input id="profile_twelve_hour_clock" type="checkbox" class="settings_checkbox" onchange="TwelveHourClockChanged();">Twelve Hour Clock</input>
             </div>
 
             <div id="profile_stats_options">
@@ -552,11 +552,11 @@ function PrimarySquadChanged() {
 }
 
 function EnterExitMessagesChanged() {
-    RequestPersistenChange('m_EnterExitMessages', document.getElementById("profile_enter_exit_messages").value ? "true" : "false");
+    RequestPersistenChange('m_EnterExitMessages', document.getElementById("profile_enter_exit_messages").checked);
 }
 
 function TwelveHourClockChanged() {
-    RequestPersistenChange('m_TwelveHourClock', document.getElementById("profile_twelve_hour_clock").value ? "true" : "false");
+    RequestPersistenChange('m_TwelveHourClock', document.getElementById("profile_twelve_hour_clock").checked);
 }
 
 function OpenStats(user_id) {
