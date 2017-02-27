@@ -564,8 +564,11 @@ function SetupChatView() {
 }
 
 function TogglePlayerSort() {
+    return;
     var new_sort_method = local_data.m_Persistent.m_PlayerListSort === 0 ? 1 : 0;
     RequestPersistenChange('m_PlayerListSort', new_sort_method);
+
+    local_data.m_Persistent.m_PlayerListSort = new_sort_method;
     
     for(var x = 0; x < chat_data.all_channels.length; x++) {
         if(chat_data.all_channels[x].channel_id === chat_data.current_channel) {

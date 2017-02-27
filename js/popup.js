@@ -300,7 +300,9 @@ if(localStorage !== undefined) {
 }
 
 var top_maps = ['hockey', 'miniball', 'shades'];
-var default_map = 'miniball';
+var beginner_maps = ['freshcourt'];
+var default_map = 'freshcourt';
+
 
 var text_prompt_callback = null;
 var popup_elements = [];
@@ -671,12 +673,15 @@ function ShowGameCreate(map_list, server_id) {
 
     var map_html = '<div id="create_game_map_title_1" class="map_list_element_title">Community Maps</div>';
     var top_maps_html = '<div id="create_game_map_title_2" class="map_list_element_title">Standard Maps</div>';
+    var beginner_maps_html = '<div id="create_game_map_title_2" class="map_list_element_title">Beginner Maps</div>';
     var default_map_index = 0;
 
     for(var index = 0; index < map_list.length; index++) {
         var map_div = '<div id="create_game_map_'+index+'" class="map_list_element" onclick="SelectMap('+index+');">' + game_create_settings.maps[index].map_name + '</div>';
         if(top_maps.indexOf(game_create_settings.maps[index].map_name.toLowerCase()) !== -1) {
             top_maps_html += map_div;
+        } else if(beginner_maps.indexOf(game_create_settings.maps[index].map_name.toLowerCase()) !== -1) {
+            beginner_maps_html += map_div;
         } else {
             map_html += map_div;
         }
@@ -686,7 +691,7 @@ function ShowGameCreate(map_list, server_id) {
     }
 
 
-    document.getElementById("create_game_map_list").innerHTML = top_maps_html + map_html;
+    document.getElementById("create_game_map_list").innerHTML = beginner_maps_html + top_maps_html + map_html;
     document.getElementById("game_create_name").value = game_create_settings.name;
     document.getElementById("game_create_password").value = game_create_settings.password;
 

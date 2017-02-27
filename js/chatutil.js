@@ -704,21 +704,24 @@ function GetTeamColor(team) {
 }
 
 function PlayerSortCompare(a, b) {
-    
     a.username = a.attributes ? a.attributes.username : a.user_name;
     b.username = b.attributes ? b.attributes.username : b.user_name;
     
     a.squad = a.attributes ? a.attributes.squad : a.squad;
     b.squad = b.attributes ? b.attributes.squad : b.squad;
 
-    if(local_data.m_Persistent.m_PlayerSortList === 0) {
+    //if(local_data.m_Persistent.m_PlayerSortList === 0) {
         return a.username.localeCompare(b.username, { sensitivity: 'case' }); 
-    }
+    //}
     
-    if(a.squad === "" && b.squad === "") {
+    if(a.squad === b.squad) {
         return a.username.localeCompare(b.username, { sensitivity: 'case' });
     }
     else {
+        if(a.squad === "") {
+            return 1;
+        }
+
         return a.squad.localeCompare(b.squad, { sensitivity: 'case' }); 
     }
 }
