@@ -72,6 +72,7 @@ function GotSettings(settings_data, resolution_data, patch_data) {
     document.getElementById("vsync").checked = current_settings.Vsync;
     document.getElementById("glmode").checked = current_settings.GLMode;
     document.getElementById("reticle").checked = current_settings.BallReticle;
+    document.getElementById("directional_indicator").checked = !current_settings.HideDirectionalIndicator;
     document.getElementById("use_only_talk").checked = !current_settings.UseOnlyTalkKey;
     document.getElementById("draw_bkg").checked = current_settings.DrawBackground;
 
@@ -312,6 +313,12 @@ function LockMouseChanged() {
 function BallReticleChanged() {
     if(settings_initialized == false) return;
     current_settings.BallReticle = document.getElementById("reticle").checked;
+    SaveSettings();
+}
+
+function DirectionalIndicatorChanged() {
+    if(settings_initialized == false) return;
+    current_settings.HideDirectionalIndicator = !document.getElementById("directional_indicator").checked;
     SaveSettings();
 }
 

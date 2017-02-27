@@ -139,14 +139,14 @@ var squad_popup_html = `
                                 <div id="squad_member_joined" class="weak_header"></div>
                                 <br />
                                 <div class="weak_header">Current Rank:</div>
-                                <div id="squad_member_current_rank" class="weak_header" style="margin-left:20px">Leader</div>
+                                <div id="squad_member_current_rank" class="weak_header" style="margin-left:20px">Captain</div>
                                 <br />
                                 <div id="squad_rank_container">
                                     <div class="weak_header">Set Rank:</div>
                                     <select id="squad_member_set_rank" class="settings_dropdown" onchange="ChangeRank();">
                                         <option>Honorary Member</option>
                                         <option>Member</option>
-                                        <option>Leader</option>
+                                        <option>Captain</option>
                                         <option>Manager</option>
                                         <option>Owner</option>
                                     </select>
@@ -161,7 +161,7 @@ var squad_popup_html = `
                             Each rank imparts the abilities of the ranks below<br />&nbsp;<br />
                             &nbsp;&nbsp;&nbsp;Owner - Can Disband The Squad<br />
                             &nbsp;&nbsp;&nbsp;Manager - Can Invite/Accept New Members and Remove Existing Members<br />
-                            &nbsp;&nbsp;&nbsp;Leader - Can Change The Squad's Channel Properties<br />
+                            &nbsp;&nbsp;&nbsp;Captain - Can Change The Squad's Channel Properties<br />
                             &nbsp;&nbsp;&nbsp;Member - Can Set The Squad As Their Primary Squad<br />
                             &nbsp;&nbsp;&nbsp;Honorary Member - Can Join The Squad Channel While It Is Locked<br />
                         </div>
@@ -806,7 +806,7 @@ function GetRankName(rank) {
     } else if(rank == 2) {
         return "Member";
     } else if(rank == 3) {
-        return "Leader";
+        return "Captain";
     } else if(rank == 4) {
         return "Manager";
     } else if(rank == 5) {

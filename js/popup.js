@@ -89,6 +89,7 @@ var popup_html = `
                 <input id="vsync" onchange="VsyncChanged();" type="checkbox" class="settings_checkbox">V-Sync</input><br />
                 <input id="glmode" onchange="GLModeChanged();" type="checkbox" class="settings_checkbox">Open GL Mode</input><br />
                 <input id="reticle" onchange="BallReticleChanged();" type="checkbox" class="settings_checkbox">Ball Reticle</input><br />
+                <input id="directional_indicator" onchange="DirectionalIndicatorChanged();" type="checkbox" class="settings_checkbox">Ship Direction Indicator</input><br />
                 <input id="draw_bkg" onchange="DrawBackgroundChanged();" type="checkbox" class="settings_checkbox">Draw Background</input><br />
 
                 <hr class="header_separator" />
@@ -695,8 +696,16 @@ function ShowGameCreate(map_list, server_id) {
 }
 
 function SelectMap(index) {
+    if(index >= game_create_settings.maps.length) {
+        return;
+    }
+
     if(game_create_settings.selected_map_index != -1) {
-        document.getElementById("create_game_map_" + game_create_settings.selected_map_index).className = "map_list_element";
+        var elem = document.getElementById("create_game_map_" + game_create_settings.selected_map_index);
+
+        if(elem != null) {
+            elem.className = "map_list_element";
+        }
     }
 
     game_create_settings.selected_map = game_create_settings.maps[index].map_name;

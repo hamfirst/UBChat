@@ -45,7 +45,7 @@ var mode_chat_html =`
 <div id="game_lobby_bkg" class="popup_bkg" style="z-index:3;display:none;"></div>
 <div id="game_lobby_container" class="blue_box game_lobby_container game_lobby_container_full" style="display:none">
     <div class="weak_header">
-        Players In Game
+        Pre-Game Lobby
     </div>
     <div id="game_lobby_player_list" class="blue_interior">
     </div>
