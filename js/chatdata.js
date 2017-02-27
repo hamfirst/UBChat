@@ -277,7 +277,7 @@ function AddServer(server_id, server_name, server_location, server_host, ping_po
         server_ping = " - " + server_ping + "ms";
     }
 
-    var html = '<div class="server_list_element" id="server_'+server_id+'" onclick="PingServer(\''+server_id+'\',\''+server_host+'\','+ping_port+');">';
+    var html = '<div class="server_list_element" id="server_'+server_id+'" onclick="PingServer(\''+server_id+'\',\''+server_host+'\','+ping_port+');" ondblclick="PickServer(\''+server_id+'\');">';
     html += '<img class="server_list_icon" src="img/flags/'+server_location+'.png" />&nbsp; ';
     html += htmlify(server_name);
     html += '&nbsp;<div id="server_ping_'+server_id+'" style="display:inline;">'+server_ping+'</div>';
