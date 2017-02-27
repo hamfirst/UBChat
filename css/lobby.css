@@ -1133,9 +1133,9 @@ div.chat_element_time
     font-size: 6pt;
     color: rgba(222, 229, 243, 0.7);
     display: inline-block;
-    width: 35px;
     text-align: left;
     vertical-align: text-top;
+    margin-right: 3px;
 }
 
 

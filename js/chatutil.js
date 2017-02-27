@@ -170,7 +170,10 @@ function GenerateChatHTML(chat_msg) {
         msg_time.setTime(epoch_secs * 1000);
 
         var hours_val = msg_time.getHours();
+        var hours_suffix = '';
+        
         if(local_data.m_Persistent.m_TwelveHourClock) {
+            hours_suffix = hours_val >= 12 ? " PM" : " AM";
             hours_val = hours_val % 12;
         }
 
@@ -189,7 +192,7 @@ function GenerateChatHTML(chat_msg) {
         var msg = ProcessText(chat_msg.msg, false);
 
         var html_data =
-            '<div class="chat_element"><div class="chat_element_name"><div class="chat_element_time">[' + hours  + ':' + minutes + ']</div>{{user}}' +
+            '<div class="chat_element"><div class="chat_element_name"><div class="chat_element_time">[' + hours  + ':' + minutes + hours_suffix +'] </div>{{user}}' +
             ':</div><div class="chat_element_text">' + msg;
 
         if('b' in chat_msg && chat_msg['b'] != null && chat_msg['b'].length > 0) {
