@@ -448,10 +448,10 @@ function RequestMapList(server_id) {
     connection_data.requested_create_server = server_id;
 }
 
-function RequestCreateGame(map, game_name, password, score_limit, time_limit, player_limit) {
+function RequestCreateGame(map, game_name, password, score_limit, time_limit, player_limit, server_id) {
     var msg_data = {
         'c': 'create_game',
-        'server_id': connection_data.requested_create_server,
+        'server_id': server_id || connection_data.requested_create_server,
         'password': password,
         'create_data': {
             'm_Name': game_name,
