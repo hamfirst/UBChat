@@ -26,7 +26,7 @@ var mode_chat_html =`
 </div>
 <div id="options_container" >
     <ul id="options_list" class="options_list">
-        <li class="options_list_elem" onclick="JoinQuickPlayGame();"><a>Quick Play</a></li>
+        <li class="options_list_elem" id="quick_play_option" onclick="JoinQuickPlayGame();"><a>Quick Play</a></li>
         <li class="options_list_elem" onclick="OpenSquadUI();"><a>Squad</a></li>
         <li class="options_list_elem" onclick="OpenProfile();"><a>Profile</a></li>
         <li class="options_list_elem" onclick="OpenControlPopup();"><a><img src="img/icons/settings.png" style="height:17px;margin-right:20px;"></a></li>
@@ -545,8 +545,9 @@ function SetupChatView() {
 
     if(window.hasOwnProperty('ubfrontend') == false) {
         document.getElementById("server_list_create_game").style.display = "none";
+        document.getElementById("quick_play_option").style.display = "none";
     }
-
+    
     /*
     var users = [];
     for(var index = 0; index < 150; index++) {
