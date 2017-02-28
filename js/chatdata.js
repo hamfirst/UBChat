@@ -551,7 +551,7 @@ function JoinQuickPlayGame() {
     for(var index in server_list) {
         
         var current_server = server_list[index];
-        if(current_server.ping > 200) {
+        if(current_server.ping > 100) {
             continue;
         }
         
