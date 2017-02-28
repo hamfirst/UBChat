@@ -26,7 +26,7 @@ var mode_chat_html =`
 </div>
 <div id="options_container" >
     <ul id="options_list" class="options_list">
-        <li class="options_list_elem" onclick="JoinQuickGame();"><a>Quick Play</a></li>
+        <li class="options_list_elem" onclick="JoinQuickPlayGame();"><a>Quick Play</a></li>
         <li class="options_list_elem" onclick="OpenSquadUI();"><a>Squad</a></li>
         <li class="options_list_elem" onclick="OpenProfile();"><a>Profile</a></li>
         <li class="options_list_elem" onclick="OpenControlPopup();"><a><img src="img/icons/settings.png" style="height:17px;margin-right:20px;"></a></li>

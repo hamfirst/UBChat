@@ -545,26 +545,25 @@ function GamePreviewObserve() {
     CloseGamePreview();
 }
 
-function JoinQuickGame() {   
+function JoinQuickPlayGame() {   
     var server_list = GetCurrentServerListWithPings(server_data.m_ServerList);
-    
-    for(var current_server_id in server_list) {
+
+    for(var index in server_list) {
         
-        if(server_list[current_server_id].ping > 100) {
+        var current_server = server_list[index];
+        if(current_server.ping > 200) {
             continue;
         }
-
-        for(var current_game_id in server_list[current_server_id].m_Games) {
-            if(IsValidQuickPlayGame(server_list[current_server_id].m_Games[current_game_id])) {
-                JoinGame(server_list[x].id, current_game_id, "", false);
+        
+        for(var current_game_id in current_server.m_Games) {
+            if(IsValidQuickPlayGame(current_server.m_Games[current_game_id])) {
+                RequestJoinGame(current_server.id, current_game_id, "", false);
                 return;
             }
         }
     }    
-    
-    if(game_id === -1) {
-        RequestCreateGame("FreshCourt", "Quick Play Match", "", 10, false, 6, server_list[0].id);
-    }
+
+    RequestCreateGame("FreshCourt", "Quick Play Match", "", 10, false, 6, server_list[0].id);
 }
 
 function IsValidQuickPlayGame(game) {
