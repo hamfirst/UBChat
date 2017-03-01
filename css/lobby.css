@@ -1128,9 +1128,9 @@ div.chat_element_text
 
 div.chat_element_time
 {
-    font-family: TempestaSeven, Verdana, sans-serif;
+    font-family: Verdana, sans-serif;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    font-size: 6pt;
+    font-size: 8pt;
     color: rgba(222, 229, 243, 0.7);
     display: inline-block;
     text-align: left;
@@ -1140,7 +1140,7 @@ div.chat_element_time
 
 
 div.chat_element_title {
-    font-family: TempestaSeven, Verdana, sans-serif;
+    font-family: Verdana, sans-serif;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-size: 5pt;
     color: rgba(164, 168, 127, 0.7);
