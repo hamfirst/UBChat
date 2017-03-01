@@ -208,7 +208,7 @@ var squad_popup_html = `
                         </div>
                         <textarea id="squad_motd" style="height:49vh;"></textarea>
 
-                        <div>
+                        <div id="squad_manage_channel_container">
                             <button class="style3" style="width:35%" onclick="FetchCurrentMotd();">Fetch Current Text</button>                            
                             <button class="style3" style="width:50%;float:right;" onclick="SubmitMotd();">Set Channel Text</button>                            
                         </div>
@@ -422,20 +422,23 @@ function SyncSquadManage(squad_id) {
         document.getElementById("squad_manage_channel_lock").checked = local_data.m_Squads[squad_id].m_Locked;
         
         RenderUserManagement();
+        RenderChannelManagement();
     }
 }
 
 function RenderUserManagement() {
-    active_synced_squad_rank = GetUserSquadRank(active_synced_squad);
-
-    var canManageUsers = (active_synced_squad_rank === "Manager" || active_synced_squad_rank === "Owner")
+    var canManageUsers = GetUserSquadRank(active_synced_squad) >= 4;
+    var display = canManageUsers ? "block" : "none";
     
-    if(canManageUsers) {
-        document.getElementById("squad_rank_container").style.display = "block";
-    }
-    else {
-        document.getElementById("squad_rank_container").style.display = "none";
-    }
+    document.getElementById("squad_rank_container").style.display = display;
+}
+
+function RenderChannelManagement() {
+    var canManageChannel = GetUserSquadRank(active_synced_squad) >= 3;
+    var display = canManageChannel ? "block" : "none";
+    
+    document.getElementById("squad_manage_channel_lock").disabled = !canManageChannel;
+    document.getElementById("squad_manage_channel_container").style.display = display;
 }
 
 function GetUserSquadRank(squad_id) {  
@@ -445,7 +448,7 @@ function GetUserSquadRank(squad_id) {
     for(var x = 0; x < squad_keys.length; x++) {
         var user_index = squad_keys[x];
         if(squad.m_Users[user_index].m_UserKey === local_data.m_UserKey) {
-            return GetRankName(squad.m_Users[user_index].m_MembershipFlags);
+            return squad.m_Users[user_index].m_MembershipFlags;
         }
     }
 }
