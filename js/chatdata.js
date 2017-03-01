@@ -298,10 +298,9 @@ function AddServerGame(server_id, game_id, game_name, map_name, cur_players, cur
     var game_html = '<div id="'+game_elem_id+'" class="server_list_game"';
     game_html += ' onclick="ClickGame(\''+server_id+'\',\''+game_id+'\');"';
     game_html += ' oncontextmenu="ClickGame(\''+server_id+'\',\''+game_id+'\');">';
-
-    if(password_protected) {
-        game_html += '<img src="img/icons/lock.png" />'
-    }
+    
+    game_html += '<div class="game_icons">';
+    game_html += '<img src="img/icons/lock.png" style="display:'+(password_protected ? 'inline' : 'none')+'">';
 
     var observer_text = "";
     if(cur_observers > 0) {
@@ -311,6 +310,9 @@ function AddServerGame(server_id, game_id, game_name, map_name, cur_players, cur
     }
 
     game_html += '<img id="'+game_elem_id+'_started" src="img/icons/ingame.png" style="display:'+(started ? 'inline' : 'none')+'" />';
+    
+    game_html += '</div>';
+    
     game_html += '(<div id="'+game_elem_id+'_players" style="display:inline;">'+cur_players+'</div>/'+max_players+') ';
     game_html += '<div id="'+game_elem_id+'_obs" style="display:inline;">'+observer_text+'</div>';
     game_html += ' '+map_name+' - '+htmlify(game_name)+'</div>';
