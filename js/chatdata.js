@@ -546,3 +546,59 @@ function GamePreviewObserve() {
     JoinGame(chat_data.preview_server_id, chat_data.preview_game_id, null, true);
     CloseGamePreview();
 }
+
+function JoinQuickPlayGame() {   
+    var server_list = GetCurrentServerListWithPings(server_data.m_ServerList);
+
+    for(var index in server_list) {
+        
+        var current_server = server_list[index];
+        if(current_server.ping > 100) {
+            continue;
+        }
+        
+        for(var current_game_id in current_server.m_Games) {
+            if(IsValidQuickPlayGame(current_server.m_Games[current_game_id])) {
+                RequestJoinGame(current_server.id, current_game_id, "", false);
+                return;
+            }
+        }
+    }    
+
+    RequestCreateGame("FreshCourt", "Quick Play Match", "", 10, false, 6, server_list[0].id);
+}
+
+function IsValidQuickPlayGame(game) {
+    var valid_game = true;
+    
+    if(game.m_Map === "Hockey") {
+        valid_game = false;
+    }
+
+    if(game.m_MaxPlayers === game.m_CurPlayers) {
+        valid_game = false;
+    }
+
+    if(game.m_PasswordProtected) {
+        valid_game = false;
+    }
+    
+    return valid_game;
+}
+
+function GetCurrentServerListWithPings(server_list) {
+
+    var pinged_server_list = [];
+    
+    Object.keys(server_list).forEach(function(key) {
+        pinged_server_list.push(server_data.m_ServerList[key]);
+        pinged_server_list[pinged_server_list.length - 1].ping = GetServerPing(key);
+        pinged_server_list[pinged_server_list.length - 1].id = key
+    });
+    
+    pinged_server_list.sort(function(a,b) {
+        return a.ping - b.ping;
+    });
+
+    return pinged_server_list;
+}
