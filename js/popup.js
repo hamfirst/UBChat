@@ -179,6 +179,12 @@ var popup_html = `
                 </select>
                 <div class="base_text">Current Icon: <span id="profile_no_icon"></span><img id="profile_current_icon" src="img/icons/1.png"></div>
                 <br />&nbsp;
+
+                <div class="weak_header">Celebration</div>
+                <select id="profile_celebration" onchange="CelebrationChanged();" class="settings_dropdown">
+                </select>
+                <div class="base_text">Current Celebration: <span id="profile_current_celebration">Default</span></div>
+                <br />&nbsp;
             
                 <div class="weak_header">Primary Squad</div>
                 <select id="profile_primary_squad" onchange="PrimarySquadChanged();" class="settings_dropdown">
@@ -318,7 +324,7 @@ function AttachPopupHTML() {
         popup_container.removeChild(popup_container.firstChild);
     }
     
-    popup_container.innerHTML = squad_popup_html + popup_html;
+    popup_container.innerHTML = squad_popup_html + popup_html + xp_popup_html;
 
     document.getElementById("text_prompt_input").addEventListener("keydown", HandleShowTextPromptKeyDown); 
 
@@ -331,7 +337,8 @@ function AttachPopupHTML() {
       document.getElementById("server_pick_popup_bkg"),
       document.getElementById("profile_popup_bkg"),
       document.getElementById("status_popup_bkg"),
-      document.getElementById("text_edit_popup_bkg")
+      document.getElementById("text_edit_popup_bkg"),
+      document.getElementById("xp_popup_bkg")
     ];
 
     auto_join_list = CreateList("auto_joins_list", "auto_joins_list_", 
@@ -419,6 +426,17 @@ function SyncProfileOptions() {
 
     icon_list.innerHTML = icon_options;
     icon_list.value = icon_list_selection;
+
+    var celeb_list = document.getElementById("profile_celebration");
+    var celeb_list_selection = celeb_list.value;
+
+    var celeb_options = '<option value="-1">Default</option>';
+    for(var index in local_data.m_CelebrationNames) {
+        celeb_options += '<option value="'+index+'">'+local_data.m_CelebrationNames[index]+'</option>';
+    }
+
+    celeb_list.innerHTML = celeb_options;
+    celeb_list.value = celeb_list_selection;
 }
 
 function SyncProfileSquads() {
@@ -448,6 +466,9 @@ function SyncProfileSelectedOptions() {
     var icon_list = document.getElementById("profile_icon");
     icon_list.value = local_data.m_Icon;
 
+    var celeb_list = document.getElementById("profile_celebration");
+    celeb_list.value = local_data.m_Celebration;
+
     var squad_list = document.getElementById("profile_primary_squad");
     squad_list.value = local_data.m_PrimarySquad;
 }
@@ -473,6 +494,16 @@ function SyncIcon() {
     }
 
     current_icon.attributes.src.value = local_data.m_IconURL;
+}
+
+function SyncCelebration() {
+    var current_celeb = document.getElementById("profile_current_celebration");
+    if(local_data.m_Celebration in local_data.m_CelebrationNames == false) {
+        current_celeb.innerHTML = "Default";
+        return;
+    }
+
+    current_celeb.innerHTML = local_data.m_CelebrationNames[local_data.m_Celebration];
 }
 
 function SyncPrimarySquad() {
@@ -513,6 +544,16 @@ function IconChanged() {
     var msg = {
         'c': 'set_icon',
         'val': Number(icon_list.value)
+    };
+    
+    SendSocketMessage(msg);
+}
+
+function CelebrationChanged() {
+    var celeb_list = document.getElementById("profile_celebration");
+    var msg = {
+        'c': 'set_celeb',
+        'val': Number(celeb_list.value)
     };
     
     SendSocketMessage(msg);

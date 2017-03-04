@@ -326,6 +326,10 @@ function HandleSocketMessage(msg) {
         if(msg_data['c'] == 'edit_channel_info') {
             GotChannelInfoForEdit(msg_data['data'], msg_data['channel_id']);
         }
+
+        if(msg_data['c'] == 'xp') {
+            ShowXPGain(msg_data);
+        }
     }
 }
 

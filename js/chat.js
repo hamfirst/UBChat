@@ -256,6 +256,7 @@ function InitializeChatCallbacks() {
 
     CreateChangeCallback(chat_callback_list, local_data, ".m_Title", function(icon) { SyncTitle(); });
     CreateChangeCallback(chat_callback_list, local_data, ".m_IconURL", function(icon) { SyncIcon(); });
+    CreateChangeCallback(chat_callback_list, local_data, ".m_Celebration", function(icon) { SyncCelebration(); });
     CreateChangeCallback(chat_callback_list, local_data, ".m_PrimarySquad", function(icon) { SyncPrimarySquad(); });
 
     CreateChangeCallback(game_preview_callback_list, game_preview_data, ".m_Started", function(score) { UpdatePreviewScore(); });
