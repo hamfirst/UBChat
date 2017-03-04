@@ -450,7 +450,7 @@ function SyncProfileSquads() {
     var squad_options = '<option value="0">None</option>';
     
     for(var index in local_data.m_Squads) {
-        if(GetUserSquadRank(index) !== "Honorary Member") {
+        if(GetUserSquadRank(index) > 1) {
             squad_options += '<option value="'+index+'">'+local_data.m_Squads[index].m_Name+'</option>';
         }
     }    
