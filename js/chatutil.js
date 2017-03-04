@@ -174,12 +174,11 @@ function GenerateChatHTML(chat_msg) {
         
         if(local_data.m_Persistent.m_TwelveHourClock) {
             hours_suffix = hours_val >= 12 ? " PM" : " AM";
-            hours_val = hours_val % 12;
+            hours_val = ((hours_val + 11) % 12 + 1);
         }
 
         var hours = hours_val.toString();
         var minutes = msg_time.getMinutes().toString();
-
 
         if(hours.length < 2) {
             hours = "0" + hours;
