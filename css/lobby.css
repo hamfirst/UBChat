@@ -76,6 +76,26 @@
     margin-top: 10px;
 }
 
+#quick_play_option {
+    position: absolute;
+    top: calc(10vh - 50px);
+    height: 100px;
+    right: calc(20vw + 60px);
+    width: 300px;
+    font-size: 36pt;
+
+    background-color: rgba(6, 7, 7, 1.0);
+    border: 1px dashed rgba(52, 72, 114, 1.0);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-shadow: 1px 1px black;
+    font-family: Impact, sans-serif;
+    color: lightgray;
+    
+    box-shadow: inset 0 0 10px 5px rgba(35, 23, 77, 0.25), 0 0 30px 2px rgba(103, 150, 241, 1.0);
+}
+
 #chat_container {
     position: absolute;
     top: 20vh;

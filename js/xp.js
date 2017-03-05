@@ -234,6 +234,8 @@ function ShowXPGain(xp_packet) {
         if(current_level_val >= rewards.m_Ranks.length) {
             break;
         }
+        
+        cur_level_xp = rewards.m_Ranks[current_level_val].m_XP;
     }
 
     ShowPopup(9);

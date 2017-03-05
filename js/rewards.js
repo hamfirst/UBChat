@@ -249,7 +249,7 @@ var rewards = {
       "m_Rewards": {
         "m_Titles": ["Veteran Player"],
         "m_Icons": [["Veteran Player", "img/icons/1.png"]],
-        "m_AutoJoins": ["Vets"]
+        "m_AutoJoins": ["Vet"]
       }
     },
     {
