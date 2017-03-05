@@ -896,6 +896,13 @@ div.xp_rewards_element {
     opacity: 0;
 }
 
+#xp_rewards_hint {
+    position: absolute;
+    top: 385px;
+    right: 10px;
+    opacity: 0;
+}
+
 #xp_rewards {
     position: absolute;
     background-color: #0d0f23;

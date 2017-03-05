@@ -25,6 +25,7 @@ var xp_popup_html = `
         <div id="xp_rewards">
 
         </div>
+        <div id="xp_rewards_hint" class="tiny_header">Use The <a onclick="ShowPopup(6);">Profile</a> Menu To Activate</div>
         <button id="xp_progress_button" class="control_override" type="button" onclick="ProgressXPPopup();">Next</button>
     </div>
 </div>
@@ -41,6 +42,9 @@ function ShowXPGain(xp_packet) {
 
     var xp_rewards_label = document.getElementById("xp_rewards_label");
     xp_rewards_label.style.opacity = 0;
+
+    var xp_rewards_hint = document.getElementById("xp_rewards_hint");
+    xp_rewards_hint.style.opacity = 0; 
 
     var xp_rewards = document.getElementById("xp_rewards");
     xp_rewards.style.opacity = 0;
@@ -191,7 +195,7 @@ function ShowXPGain(xp_packet) {
                 });
 
             PushAnimation(anim_seq, 400,
-                function(){ xp_rewards.style.opacity = 1; xp_rewards_label.style.opacity = 1; },
+                function(){ xp_rewards.style.opacity = 1; xp_rewards_label.style.opacity = 1; xp_rewards_hint.style.opacity = 1; },
                 function(val){ xp_rewards.style.opacity = val; xp_rewards_label.style.opacity = val; },
                 function(){ 
                     var r = rewards.m_Ranks[rewards_rank].m_Rewards;
@@ -258,6 +262,9 @@ function ShowRankUp(rank_ups, current_level_val, current_xp_val) {
 
     var xp_rewards_label = document.getElementById("xp_rewards_label");
     xp_rewards_label.style.opacity = 0;
+
+    var xp_rewards_hint = document.getElementById("xp_rewards_hint");
+    xp_rewards_hint.style.opacity = 0; 
     
     var xp_progress_button = document.getElementById("xp_progress_button");
     xp_progress_button.style.opacity = 0;
