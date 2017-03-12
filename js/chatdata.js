@@ -238,6 +238,8 @@ function ClearChatPlayers(channel_id) {
 }
 
 function SetCurrentChannel(channel_id) {
+    dom_data.chatinput.focus();
+    
     if(chat_data.current_channel == channel_id) {
         return;
     }
