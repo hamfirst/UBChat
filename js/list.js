@@ -7,11 +7,12 @@ function CreateList(elem_parent_id, item_id_prefix, element_creator_cb, default_
         'elems': {},
         'onselect': null,
         'onupdate': null,
+        'element_type': 'div',
 
         'CreateElem': function(idx, item_data) {
             var elem_id = item_id_prefix + idx;
 
-            var elem = document.createElement("div");
+            var elem = document.createElement(this.element_type);
 
             var html = element_creator_cb(elem, elem_id, idx, item_data);
             elem.innerHTML = html;

@@ -417,7 +417,7 @@
     top: 20vh;
     left: 2vw;
     width: 36vw;
-    height: 40vh;
+    height: calc(40vh - 30px);
     transition: all 0.3s;
     border: 1px dotted #2a4d76;
     background-color: rgba(14, 19, 26, 1.0);
@@ -427,6 +427,16 @@
     font-family: Verdana, sans-serif;
     font-size: 10pt;
     padding: 5px 5px 5px 5px
+}
+
+#lobby_info_tabs {
+    position: absolute;
+    top: calc(60vh - 20px);
+    left: 2vw;
+    width: 36vw;
+    height: 20px;
+    transition: all 0.3s;
+    text-align: left;
 }
 
 #create_game_map_list {
@@ -1664,6 +1674,35 @@ button.channel_button_selected
     box-shadow: inset 0 0 10px 5px rgba(35, 23, 77, 0.25), 0 0 30px 2px rgba(103, 150, 241, 1.0);
 }
 
+button.welcome_info_button
+{
+    background-color: rgba(37, 44, 56, 1.0);
+    border: 1px dotted #2a4d76;
+    display:inline-block;
+    cursor:pointer;
+    color:rgba(146, 151, 161, 1.0);
+    font-family: Impact, sans-serif;
+    font-size:17px;
+    text-decoration:none;
+    text-shadow: 1px 1px black;
+    height:30px;
+    padding: 0 6px;
+    margin-top: 1px;
+}
+
+button.welcome_info_button_selected
+{
+    background-color: rgba(50, 55, 90, 1.0);
+    border: 1px dotted #2a4d76;
+    display:inline-block;
+    cursor:pointer;
+    color: white;
+    font-family: Impact, Geneva, sans-serif;
+    font-size:17px;
+    height: 30px;
+    margin-top: 1px;
+}
+
 button.channel_button_new_text {
     text-decoration: underline;
     color: #B4DFA1;
@@ -1944,7 +1983,7 @@ li.file_name_list_elem:hover {
 }
 
 @media (max-width: 900px){
-    #lobby_info_container, #server_list_container {
+    #lobby_info_container, #server_list_container, #lobby_info_tabs {
         display:none;
     }
 

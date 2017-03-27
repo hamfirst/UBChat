@@ -25,7 +25,7 @@ var mode_chat_html =`
     </div>
 </div>
 <button class="style2" id="quick_play_option" onclick="JoinQuickPlayGame();">Quick Play</button>
-<div id="options_container" >
+<div id="options_container">
     <ul id="options_list" class="options_list">
         <li class="options_list_elem" onclick="OpenSquadUI();"><a>Squad</a></li>
         <li class="options_list_elem" onclick="OpenProfile();"><a>Profile</a></li>
@@ -40,8 +40,9 @@ var mode_chat_html =`
     <div id="server_list" class="blue_interior">
     </div>
 </div>
-<div id="lobby_info_container">
-    
+<div id="lobby_info_container"> 
+</div>
+<div id="lobby_info_tabs">   
 </div>
 <div id="game_lobby_bkg" class="popup_bkg" style="z-index:3;display:none;"></div>
 <div id="game_lobby_container" class="blue_box game_lobby_container game_lobby_container_full" style="display:none">
@@ -85,11 +86,15 @@ var local_data = {};
 var server_data = {};
 var game_data = {};
 var game_preview_data = {};
+var welcome_info_data = {};
 var chat_callback_list = [];
 var server_callback_list = [];
 var game_callback_list = [];
 var game_preview_callback_list = [];
+var welcome_info_callback_list = [];
 var post_change_callbacks = [];
+
+var welcome_info_list = null;
 
 function ResetChatCallbacks() {
     local_data = {};
@@ -263,6 +268,21 @@ function InitializeChatCallbacks() {
     CreateChangeCallback(game_preview_callback_list, game_preview_data, ".m_Started", function(score) { UpdatePreviewScore(); });
     CreateChangeCallback(game_preview_callback_list, game_preview_data, ".m_Score", function(score) { UpdatePreviewScore(); });
 
+    welcome_info_list = CreateList("lobby_info_tabs", "welcome_tab", function(elem, elem_id, idx, val) { return val.m_Name; }, "welcome_info_button", "welcome_info_button_selected");
+    welcome_info_list.element_type = "button";
+    welcome_info_list.onselect = function(idx) {
+        var elem = document.getElementById("lobby_info_container");
+        elem.innerHTML = welcome_info_data[idx].m_Info;
+    }
+
+    welcome_info_list.onupdate = function(idx) {
+        if(welcome_info_list.selected_element == idx) {
+            var elem = document.getElementById("lobby_info_container");
+            elem.innerHTML = welcome_info_data[idx].m_Info;
+        }
+    }
+
+    CreateListBinding(welcome_info_list, "", welcome_info_callback_list, welcome_info_data);
     CreateListBinding(auto_join_list, ".m_AutoJoinChannels", chat_callback_list, local_data);
 
     disable_profile_sync = true;
@@ -354,6 +374,21 @@ function HandleGamePreviewDataUpdate(change_data) {
     else {
         game_preview_data = ApplyChangeNotification(change, game_preview_data);
         CallChangeCallbacks(change, game_preview_callback_list, game_preview_data);
+    }
+
+    CallPostChangeCallbacks();
+}
+
+function HandleWelcomeInfoDataUpdate(change_data) {
+    var change = ParseChangeNotification(change_data);
+
+    if(change["op"] == "kRemove" || change["op"] == "kClear") {
+        CallChangeCallbacks(change, welcome_info_callback_list, welcome_info_data);
+        welcome_info_data = ApplyChangeNotification(change, welcome_info_data);
+    }
+    else {
+        welcome_info_data = ApplyChangeNotification(change, welcome_info_data);
+        CallChangeCallbacks(change, welcome_info_callback_list, welcome_info_data);
     }
 
     CallPostChangeCallbacks();
@@ -495,11 +530,6 @@ function ClickChannel(channel_id) {
     if(options.length > 0) {
         CreatePopup(options);
     }
-}
-
-function UpdateLobbyInfo(msg) {
-    document.getElementById("lobby_info_container").innerHTML = msg;
-
 }
 
 function TogglePlayerList() {

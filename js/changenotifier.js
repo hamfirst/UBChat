@@ -211,7 +211,7 @@ function HandleSetChange(change, callback_list, obj) {
       continue;
     }
             
-    if(change_path["path"].length < callback_path["path"].length) {
+    if(change_path["path"].length <= callback_path["path"].length) {
       if(callback_path["path"].substr(0, change_path["path"].length) == change_path["path"]) {
         // Root level change
         if(PathExistsInObject(callback_path, obj)) {

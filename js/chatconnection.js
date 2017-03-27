@@ -24,7 +24,7 @@ var connection_data = {
     mode: '',
     remote_host : null,
     remote_port : null,
-    version: 1037,
+    version: 1038,
     is_relocating: false,
     relocation_token: null,
     relocation_messages: [],
@@ -208,7 +208,7 @@ function HandleSocketMessage(msg) {
             FinalizeProfile();
 
             if(connection_data.welcome_info != null) {
-                UpdateLobbyInfo(connection_data.welcome_info);
+                HandleWelcomeInfoDataUpdate(connection_data.welcome_info);
                 connection_data.welcome_info = null;
             }
 
@@ -240,7 +240,7 @@ function HandleSocketMessage(msg) {
         }
 
         if(msg_data['c'] == 'winfo') {
-            UpdateLobbyInfo(msg_data["data"]);
+            HandleWelcomeInfoDataUpdate(msg_data["data"]);
             return;
         }
         

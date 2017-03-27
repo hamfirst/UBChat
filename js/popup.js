@@ -307,7 +307,7 @@ if(localStorage !== undefined) {
 
 var top_maps = ['hockey', 'miniball', 'shades'];
 var beginner_maps = ['freshcourt'];
-var default_map = 'freshcourt';
+var default_map = 'miniball';
 
 
 var text_prompt_callback = null;
@@ -726,6 +726,7 @@ function ShowGameCreate(map_list, server_id) {
         } else {
             map_html += map_div;
         }
+        
         if(game_create_settings.maps[index].map_name.toLowerCase() === default_map){
             default_map_index = index;
         }
@@ -736,11 +737,7 @@ function ShowGameCreate(map_list, server_id) {
     document.getElementById("game_create_name").value = game_create_settings.name;
     document.getElementById("game_create_password").value = game_create_settings.password;
 
-    if(game_create_settings.selected_map_index === -1)
-        SelectMap(default_map_index);
-    else
-        SelectMap(game_create_settings.selected_map_index)
-
+    SelectMap(default_map_index);
     ShowPopup(4);
 }
 
